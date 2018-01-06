@@ -1,0 +1,595 @@
+﻿@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+     <meta name="keywords" content="">
+     <meta name="description" content="Crewtok create a superb CRM specifically for the service industries">
+    <title>Crewtok | Service Industry CRM</title>
+     <link rel="icon" type="image/png" sizes="32x32" href="@Url.Content("~/MianAssests/icon/favicon-32x32.png")">
+    <link rel="icon" type="image/png" sizes="96x96" href="@Url.Content("~/MianAssests/icon/favicon-96x96.png")">
+    <link rel="apple-touch-icon" sizes="57x57" href="@Url.Content("~/MianAssests/icon/apple-icon-57x57.png")">
+    <link rel="apple-touch-icon" sizes="114x114" href="@Url.Content("~/MianAssests/icon/apple-icon-114x114.png")">
+     <link rel="stylesheet" href="@Url.Content("~/MianAssests/css/bootstrap.min.css")">
+     <link rel="stylesheet" href="@Url.Content("~/MianAssests/css/owl.carousel.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/MianAssests/css/animate.css")">
+     <link rel="stylesheet" href="@Url.Content("~/MianAssests/css/font-awesome.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/MianAssests/css/linearicon.css")">
+     <link rel="stylesheet" href="@Url.Content("~/MianAssests/css/styles.css")">
+     <link rel="stylesheet" href="@Url.Content("~/MianAssests/css/responsive-style.css")">
+    <script src="@Url.Content("~/MianAssests/js/modernizr.min.js")"></script>
+</head>
+<body>
+     <header id="top">
+     <nav class="navbar  navbar-expand-lg navbar-light top-navbar" data-toggle="sticky-onscroll">
+            <div class="container">
+                <a class="navbar-brand" href="@Url.Action("index","home")">CREWTOK<alt ="logo" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav pull-right">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="@Url.Action("index","home")">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Product <i class="icon-chevron-down"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href=""> <span class="icon-find-replace"></span>Crewtok CRM</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("index","login")">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary" href="@Url.Action("index","login")">TRY FOR FREE</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+           </header> 
+    <section>
+        <div id="myCarousel" class="carousel slide bg-inverse" data-ride="carousel">
+             <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+             <div class="carousel-inner" role="listbox">
+                 <div class="carousel-item active" style="background: url(MianAssests/images/home2-slider1.jpg)">
+                    <div class="overlay"></div>
+                    <div class="carousel-caption center-caption">
+                        <div class="dis-table">
+                            <div class="caption-content-wrapper">
+                                <div class="container">
+                                    <p>A Superb CRM for the Service Industry</p>
+                                    <h1 class="wow fadeInDown" data-wow-duration="1.5s">Communicate with your field workers with<br /> text, chat, email and phone</h1>
+                                    <div class="btn-wrapper wow fadeInUp" data-wow-duration="2s">
+                                        <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#getInToucheModal">Get Early Access</a>
+                                        <a href="@Url.Action("index","login")" class="btn btn-transparent page-scroll">Signin - Register</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="carousel-item" style="background: url(MianAssests/images/home2-slider3.jpg)">
+                    <div class="overlay"></div>
+                    <div class="carousel-caption center-caption">
+                        <div class="dis-table">
+                            <div class="caption-content-wrapper">
+                                <div class="container">
+                                    <p>An Innovative CRM for the Service Industry</p>
+                                    <h1 class="wow fadeInRight" data-wow-duration="1.5s">Manage all contact, managers, worker,<br /> subcontractor, and customers</h1>
+                                    <div class="btn-wrapper wow fadeInUp" data-wow-duration="2s">
+                                        <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#getInToucheModal">Get Early Access</a>
+                                        <a href="@Url.Action("index","login")" class="btn btn-transparent page-scroll">Signin - Register</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="carousel-item" style="background: url(MianAssests/images/home2-slider2.jpg)">
+                    <div class="overlay"></div>
+                    <div class="carousel-caption center-caption">
+                        <div class="dis-table">
+                            <div class="caption-content-wrapper">
+                                <div class="container">
+                                    <p>Mind blowing CRM for the service industry</p>
+                                    <h1 class="wow fadeInLeft" data-wow-duration="1.5s">Manage your inventory, equipement <br /> the most efficient way possible. </h1>
+                                    <div class="btn-wrapper wow fadeInUp" data-wow-duration="2s">
+                                        <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#getInToucheModal">Get Early Access</a>
+                                        <a href="@Url.Action("index","login")" class="btn btn-transparent page-scroll">Signin - Register</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 </div>
+              <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="icon-chevron-left" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="icon-chevron-right" aria-hidden="true"></span>
+            </a>
+            </div>
+    </section>
+      <section>
+        <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2 class="title-bold">Much needed killer features</h2>
+                        <p class="sub-title">All your wishes come true.<br /> Every features is created because you asked for it, </p>
+                    </div>
+                </div>
+            </div>
+             </div>
+        <div class="green-box-wrapper">
+              <div class="float-left darker-green">
+                <div class="green-box-content">
+                    <span class="icon-angle2"></span>
+                    <h5>Communicate</h5>
+                    <i>Using technology offers</i>
+                    <p>What is the most effective way to talk text, email, phone?  We don't know. That's why we give you all of them.</p>
+                    <a href="#services" class="btn white-btn page-scroll">Read More</a>
+                </div>
+            </div>
+             <div class="float-left dark-green">
+                <div class="green-box-content">
+                    <span class="icon-satellite2"></span>
+                    <h5>Manage Jobs</h5>
+                    <i>Never miss a thing</i>
+                    <p>It is nice to know that we were thinking of you when made this. This feature put you at the drive seat</p>
+                    <a href="#services" class="btn white-btn page-scroll">Read More</a>
+                </div>
+            </div>
+             <div class="float-left light-green">
+                <div class="green-box-content">
+                    <span class="icon-pencil-ruler"></span>
+                    <h5>Manage Contact</h5>
+                    <i>Your valuable resources</i>
+                    <p>We know you have many different type of contact to manage. Crewtok allows you to keep everyone in check</p>
+                    <a href="#services" class="btn white-btn page-scroll">Read More</a>
+                </div>
+            </div>
+              <div class="float-left light-green">
+                <div class="green-box-content">
+                    <span class="icon-pencil-ruler"></span>
+                    <h5>Manage Inventory</h5>
+                    <i>These things cost</i>
+                    <p>It is a fact unmanged inventory get lost or stolen. You do this everytime you assign inventory to a job</p>
+                    <a href="#services" class="btn white-btn page-scroll">Read More</a>
+                </div>
+            </div>
+             <div class="float-left darker-green">
+                <div class="green-box-content">
+                    <span class="icon-satellite2"></span>
+                    <h5>Email Marketing</h5>
+                    <i>Customers noticed</i>
+                    <p>Contact your customers at least once a month. If not. They might take their business to the competitor</p>
+                    <a href="#services" class="btn white-btn page-scroll">Read More</a>
+                </div>
+            </div>
+              <div class="float-left dark-green">
+                <div class="green-box-content">
+                    <span class="icon-satellite2"></span>
+                    <h5>Email Marketing</h5>
+                    <i>Customers noticed</i>
+                    <p>Contact your customers at least once a month. If not. They might take their business to the competitor</p>
+                    <a href="#services" class="btn white-btn page-scroll">Read More</a>
+                </div>
+            </div>
+             <div class="clearfix"></div>
+        </div>
+         <div class="client-logo-wrapper">
+            <div class="container">
+                 <div class="owl-carousel">
+                    <div><img src="" alt="" /></div>
+                    <div><img src="" alt="" /></div>
+                    <div><img src="" alt="" /></div>
+                    <div><img src="" alt="" /></div>
+                    <div><img src="" alt="" /></div>
+                </div>
+            </div>
+        </div>
+        </section>
+     <section class="our-team-section">
+        <div class="container">
+             <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2 class="title-bold">Our Innovative Team</h2>
+                        <p class="sub-title"> </p>
+                    </div>
+                </div>
+            </div>
+             <div class="row">
+                <div class="col-md-6">
+                    <h3>Our Innovative Team Members</h3>
+                    <p>We our here to make great stuff for your.  You just seat and relax which we develop some of the most innovative and blowing application to make your life better</p>
+                    <a href="#" class="btn btn-primary">Meet Our Team</a>
+                </div>
+                  <div class="col-md-6">
+                    <div class="our-team-image-wrapper">
+                        <img src="@Url.Content("~/MianAssests/images/our-team-1.jpg")" alt="our team" class="img-responsive image-1" />
+                        <img src="@Url.Content("~/MianAssests/images/our-team-2.jpg")" alt="our team" class="img-responsive image-2" />
+                        <img src="@Url.Content("~/MianAssests/images/our-team-4.jpg")" alt="our team" class="img-responsive image-3" />
+                    </div>
+                </div>
+                <!--team members end-->
+            </div>
+        </div>
+    </section>
+     <section>
+        <div class="paralaxbg" data-paralaxbg-speed="2">
+            <div class="overlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div>
+                                <span class="icon-happy"></span>
+                                <span class="counter">4850</span>
+                                <p>Text Messages</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div>
+                                <span class="icon-trophy"></span>
+                                <span class="counter">7050</span>
+                                <p>Happy Users</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div>
+                                <span class="icon-share2"></span>
+                                <span class="counter">5050</span>
+                                <p>Email Sent</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div>
+                                <span class="icon-headset"></span>
+                                <span class="counter">9000</span>
+                                <p>Happy Customers</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ++++ End of Happy clients section ++++ -->
+    <!-- ++++ Latest Blog section ++++ -->
+    <section class="latest-blog-section" id="latestBlog">
+        <div class="container">
+            <!--Section Title-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2 class="title-bold">Latest Blogs</h2>
+                        <p class="sub-title">We will share only the best post with you.  Stay tune for our blog</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Section Title -->
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Single blog -->
+                    <div class="single-blog">
+                        <div class="blog-wrapper first-blog">
+                            <a href="blog-details.html"><img src="@Url.Content("~/MianAssests/images/blog-img/blog-home-1.jpg")" alt="blog-img" class="img-responsive" /></a>
+                        </div>
+                        <div class="date-wrapper">
+                            <span class="blog-day date">20</span>
+                            <span class="blog-month date">Oct</span>
+                        </div>
+                        <h4><a href="blog-details.html">How to Create Contents That Get Traffic.</a></h4>
+                        <!--blog social section-->
+                        <ul class="blog-soical-link">
+                            <li><span>20</span> comments</li>
+                            <li><span class="icon-hearts"></span> Like</li>
+                            <li>
+                                <span class="icon-share2"></span>
+                                <a href="http://facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="http://twitter.com"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="http://gmail.com"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                <a href="http://linkedin.com"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
+                        <!-- End of blog social section-->
+                    </div>
+                    <!-- End of Single blog -->
+                </div>
+                <div class="col-md-6">
+                    <!-- Single blog -->
+                    <div class="single-blog">
+                        <div class="blog-wrapper">
+                            <a href="blog-details.html">
+                                <img src="@Url.Content("~/MianAssests/images/blog-img/blog-home-2.jpg")" alt="blog-img" class="img-responsive" />
+                            </a>
+                        </div>
+                        <div class="date-wrapper">
+                            <span class="blog-day date">29</span>
+                            <span class="blog-month date">Oct</span>
+                        </div>
+                        <h4><a href="blog-details.html">How to Create Contents That Get Traffic.</a></h4>
+                        <!--blog social section-->
+                        <ul class="blog-soical-link">
+                            <li><span>10</span> comments</li>
+                            <li><span class="icon-hearts"></span> Like</li>
+                            <li>
+                                <span class="icon-share2"></span>
+                                <a href="http://facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="http://twitter.com"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="http://gmail.com"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                <a href="http://linkedin.com"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
+                        <!-- End of blog social section-->
+                    </div>
+                    <!-- End of single blog -->
+                </div>
+                <!--see more btn-->
+                <div class="col-md-12 more-btn-wrapper">
+                    <a href="blog.html" class="btn btn-primary"> See More Blog</a>
+                </div>
+                <!--end  see more btn-->
+            </div>
+        </div>
+    </section>
+    <!-- ++++ End of Latest Blog section ++++ -->
+    <!-- ++++ Get in Touch section start ++++ -->
+    <section class="seo-audit-section get-in-touch-section" id="subscribe">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 seo-audit-title">
+                    <h3>Get In Touch!!! we can't wait to help your website grow.</h3>
+                    <p>Stay connected with us using this form below</p>
+                </div>
+            </div>
+            <!--get in touch form start-->
+            <form id="getInTouch" class="validation-form">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon icon-user" Id="nameInput"></span>
+                            <input type="text" class="form-control white-ph" placeholder="Name" aria-label="web-address" name="GetinTouchName">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon icon-envelope" id="email-address-getinTouch"></span>
+                            <input type="text" class="form-control white-ph" placeholder="Enter your e-mail" aria-label="email-address" name="GetinTouchEmail">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="Submit" class="form-control btn white-btn-lg" value="Get In Touch">
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!--get in touch form end -->
+        </div>
+    </section>
+    <!-- ++++ End of Get in Touch section ++++ -->
+    <!-- ++++ footer start ++++ -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <!--logo bottom-->
+                <div class="col-md-3">
+                    <a href="index.html" class="brand"><img src="@Url.Content("~/MianAssests/images/white-logo.png")" alt="logo" /></a>
+                    <p>We make great CRM for the services industry and we will continue to impress you with our product</p>
+                </div>
+                <!--logo bottom end -->
+                <!--Open Hours start-->
+                <div class="col-md-3">
+                    <ul>
+                        <li><h5>Industries</h5></li>
+                        <li>Landscaping</li>
+                        <li>Electrician</li>
+                        <li>Pest Control</li>
+                        <li>Maid Service</li>
+                        <li>AC & Heating</li>
+                        <li>Carpet Cleaning</li>
+                        <li>Contraction</li>
+                        <li>Pool Cleaning</li>
+                    </ul>
+                </div>
+                <!--Open Hours End-->
+                <!--service start-->
+                <div class="col-md-3">
+                    <ul>
+                        <li><h5>Features</h5></li>
+                        <li><a href="">Communication</a></li>
+                        <li><a href="">Contact Manager</a></li>
+                        <li><a href="">Inventory Manager</a></li>
+                        <li><a href="">Equipement/Fleet Manager</a></li>
+                        <li><a href="">Project Manager</a></li>
+                        <li><a href="">Email Marketing</a></li>
+                        <li><a href="">Invoice & Billing</a></li>
+                    </ul>
+                </div>
+                <!--service end-->
+                <!--support start-->
+                <div class="col-md-3">
+                    <ul>
+                        <li><h5>Support</h5></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+                    </ul>
+                </div>
+                <!--support end-->
+                <!--copy right and social media-->
+                <div class="col-md-12">
+                    <ul class="footer-social-icon-list">
+                        <li><a href="http://facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="http://twitter.com"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="http://gmail.com"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li><a href="http://linkedin.com"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="http://youtube.com"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+                    </ul>
+                    <p class="copy-info">Crewtok &COPY; 2018 / All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+        <!--scroll to top-->
+        <a class="top-btn page-scroll" href="#top"><span class="icon-chevron-up b-clor regular-text text-center"></span></a>
+        <!--end scroll to top-->
+    </footer>
+    <!-- ++++ End of Footer ++++ -->
+    <!-- +++++++++++++ Modal Portfolio +++++++++++++ -->
+    <div class="modal fade protfolio-modal vertical-center-modal" id="portfolioDetModal" tabindex="-1" role="dialog" aria-labelledby="portfolioDetModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="icon-cross"></span>
+                </button>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <!--portfolio modal slider-->
+                            <div class="col-md-6">
+                                <div id="Protfolio-modal" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active" style="background: url(images/slider1.jpg)">
+                                        </div>
+                                        <div class="carousel-item" style="background: url(images/slider2.jpg)">
+                                        </div>
+                                        <div class="carousel-item" style="background: url(images/slider3.jpg)">
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#Protfolio-modal" role="button" data-slide="prev">
+                                        <span class="icon-chevron-left" aria-hidden="true"></span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#Protfolio-modal" role="button" data-slide="next">
+                                        <span class="icon-chevron-right" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- end portfolio modal slider-->
+                            <!--portfolio modal content-->
+                            <div class="col-md-6">
+                                <div class="pro-modal-content">
+                                    <p class="gray-text">Featured - Design</p>
+                                    <h3>Branding and Identity</h3>
+                                    <p>Lorem ipsum dolor sit amet, consect etuer adipi scing elit, sed diam nonum mLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                                    <p>Eodem modo typi, qui nunc nobis videntur parum: </p>
+                                    <ul>
+                                        <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</li>
+                                        <li>Mirum est notare quam littera gothica.</li>
+                                        <li>Investigationes demonstraverunt lectores. </li>
+                                        <li>sed diam nonummy nibh euismod tincidunt;</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--End of Portfolio modal slider-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- +++++++++ End of Modal Portfolio ++++++++++ -->
+    <!-- +++++++++++++ Modal Get in  touch +++++++++++++ -->
+    <div class="modal fade get-a-touch-modal vertical-center-modal" id="getInToucheModal" tabindex="-1" role="dialog" aria-labelledby="getInToucheModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="overlay">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="icon-cross"></span>
+                    </button>
+                    <div class="modal-body">
+                        <!--contact info-->
+                        <div class="float-left">
+                            <h4>Be Part of Our Beta Users</h4>
+                            <p>We are open for any suggestion.</p>
+                            <hr>
+                            <ul class="contact-info-modal">
+                                <li>
+                                    <p>
+                                        <span class="icon-phone-wave"></span>
+                                        <strong>Call</strong>
+                                    </p>
+                                    <span>512.200.4402</span>
+                                </li>
+                                <li>
+                                    <p>
+                                        <span class="icon-at-sign"></span>
+                                        <strong>Email</strong>
+                                    </p>
+                                    <span>info@crewtok.com</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--end contact info-->
+                        <!--contact form section-->
+                        <div class="float-left green-bg">
+                            <form id="getAQuoteForm" class="validation-form">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon icon-user" id="getAqut-name"></span>
+                                            <input type="text" class="form-control white-ph" placeholder="Your name" aria-label="GetAqname" name="GetAQutName">
+                                        </div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon icon-envelope" id="getAqut-email-address"></span>
+                                            <input type="text" class="form-control white-ph" placeholder="Your E-mail" aria-label="email-address" name="GetAQutEmail">
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="Submit" class="form-control btn white-btn-lg" value="Subscribe">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!--end contact form section-->
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- +++++++++ End of Modal Get in touch ++++++++++ -->
+    <!-- +++++++++ loader +++++++++ -->
+    <div class="loader-wrapper">
+        <div class="sk-cube-grid">
+            <div class="sk-cube sk-cube1"></div>
+            <div class="sk-cube sk-cube2"></div>
+            <div class="sk-cube sk-cube3"></div>
+            <div class="sk-cube sk-cube4"></div>
+            <div class="sk-cube sk-cube5"></div>
+            <div class="sk-cube sk-cube6"></div>
+            <div class="sk-cube sk-cube7"></div>
+            <div class="sk-cube sk-cube8"></div>
+            <div class="sk-cube sk-cube9"></div>
+        </div>
+    </div>
+     <script src="@Url.Content("~/MianAssests/js/jquery-1.12.4.min.js")"></script>
+    <script src="@Url.Content("~/MianAssests/js/popper.min.js")"></script>
+     <script src="@Url.Content("~/MianAssests/js/bootstrap.min.js")"></script>
+     <script src="@Url.Content("~/MianAssests/js/waypoints.min.js")"></script>
+    <script src="@Url.Content("~/MianAssests/js/counterup.min.js")"></script>
+     <script src="@Url.Content("~/MianAssests/js/owl.carousel.min.js")"></script>
+     <script src="@Url.Content("~/MianAssests/js/paralaxbg.min.js")"></script>
+     <script src="@Url.Content("~/MianAssests/js/jquery.mixitup.min.js")"></script>
+     <script src="@Url.Content("~/MianAssests/js/jquery.validate.min.js")"></script>
+     <script src="@Url.Content("~/MianAssests/js/wow.min.js")"></script>
+     <script src="@Url.Content("~/MianAssests/js/scripts.js")"></script>
+     <script src="@Url.Content("~/MianAssests/js/ie10-viewport-bug-workaround.js")"></script>
+    <script src="@Url.Content("~/MianAssests/js/ie-emulation-modes-warning.js")"></script>
+</body>
+</html>

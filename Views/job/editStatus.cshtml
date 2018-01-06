@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Status";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CRM.Database.tblstatus
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Edit @Model.StatusName Details</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("index","Contact")">Jobs</a></li>
+            <li class="breadcrumb-item active">Status</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card card-body">
+
+            @if (ViewData["error"] != null)
+            {
+                <div class="alert alert-success alert-rounded">
+                    @ViewData["error"]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                </div>
+            }
+            @using (Html.BeginForm("editstatus", "job", FormMethod.Post, new { @class = "form-horizontal m-t-40" }))
+            {
+                <div class="form-group">
+                    <label>Status Name</label>
+                    @Html.TextBoxFor(a => a.StatusName, new { @class = "form-control", @placeholder = "Enter Status Name", @required = "required" })
+                    @Html.HiddenFor(a => a.Id)
+                </div>
+                <div class="form-group">
+                    <label for="example-email">color </label>
+                    <select class="form-control" name="Color">
+                        <option value="yellow" @(Model.Color == "yellow" ? "selected" : "")>Yellow</option>
+                        <option value="red" @(Model.Color == "red" ? "selected" : "")>Red</option>
+                        <option value="green" @(Model.Color == "green" ? "selected" : "")>Green</option>
+                        <option value="orange" @(Model.Color == "orange" ? "selected" : "")>Orange</option>
+                        <option value="blue" @(Model.Color == "blue" ? "selected" : "")>Blue</option>
+                        <option value="gray" @(Model.Color == "gray" ? "selected" : "")>Gray</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Save</button>
+                    <a href="@Url.Action("statuslist","job")" class="btn btn-inverse waves-effect waves-light">Cancel</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

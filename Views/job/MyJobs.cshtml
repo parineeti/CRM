@@ -1,0 +1,403 @@
+﻿@{
+    ViewBag.Title = "MyJobs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model CRM.Models.CalenderJobs
+@{
+    var type = (CRM.Models.jobtypeViewModal)ViewData["type"];
+    var status = (CRM.Models.StatusViewModel)ViewData["status"];
+    var users = (CRM.Models.ContactViewModal)ViewData["users"];
+}
+<script src="@Url.Content("~/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js")"></script>
+<link href="@Url.Content("~/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css")" rel="stylesheet">
+<script>
+    $(function () {
+        $("#StartDate").bootstrapMaterialDatePicker({ format: 'MM/DD/YYYY', minDate: new Date(), weekStart: 0, time: false, applyClass: 'btn-info' });
+        $("#EndDate").bootstrapMaterialDatePicker({ format: 'MM/DD/YYYY', minDate: new Date(), weekStart: 0, time: false, applyClass: 'btn-info' });
+        $("#eStartDate").bootstrapMaterialDatePicker({ format: 'MM/DD/YYYY', minDate: new Date(), weekStart: 0, time: false, applyClass: 'btn-info' });
+        $("#eEndDate").bootstrapMaterialDatePicker({ format: 'MM/DD/YYYY', minDate: new Date(), weekStart: 0, time: false, applyClass: 'btn-info' });
+
+    });
+</script>
+
+<div class="container-fluid">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-themecolor">Calendar</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active">Calendar</li>
+            </ol>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="card-body">
+                                <h4 class="card-title m-t-10">Today's Task</h4>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div style="max-height:500px;overflow:scroll;height: 500px;">
+                                            @foreach (var item in Model.jobs)
+                                            {
+                                                <div  class="text-@item.Statusclass"><i class="fa fa-circle text-info"></i> @item.Name </div>
+                                            }
+                                        </div>
+                                        <a href="#" data-toggle="modal" data-target="#add-new-event" class="btn m-t-10 btn-info btn-block waves-effect waves-light">
+                                            <i class="ti-plus"></i> Add New Event
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9">
+                            <div class="card-body b-l calender-sidebar">
+                                <div id="calendar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BEGIN MODAL -->
+    <div class="modal none-border" id="my-event">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><strong>Add Event</strong></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success save-event waves-effect waves-light">Create event</button>
+                    <button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Add Category -->
+    <div class="modal fade none-border" id="add-new-event">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><strong>Add</strong> New Job</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                @using (Html.BeginForm("index", "job", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Job Name</label>
+                        <input type="text" id="Name" class="form-control" placeholder="Enter job Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="example-email">Po Number </label>
+                        <input type="text" id="PoNumber" class="form-control" placeholder="Enter Po Number" />
+                    </div>
+                    <div class="form-group">
+                        <label>Job Start Date/Time</label><br />
+                        <input type="text" id="StartDate" class="form-control col-md-4" placeholder="Enter start date" />
+                        <select class="form-control dateClass col-md-2 col-sm-6" id="shour">
+                            <option value="01">Hour</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <select class="form-control dateClass col-md-2 col-sm-6" id="smin">
+                            <option value="00">Minute</option>
+                            <option value="00">00</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            @for (int i = 11; i <= 59; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                        <select class="form-control dateClass col-md-2 col-sm-6" id="sampm">
+                            <option value="AM">AM/PM</option>
+                            <option value="PM">PM</option>
+                            <option value="AM">AM</option>
+                        </select>
+                     </div>
+                    <div class="form-group">
+                        <label>Job End Date/Time</label><br />
+                        <input type="text" id="EndDate" class="form-control col-md-4" placeholder="Enter End date" />
+                        <select class="form-control dateClass col-md-2 col-sm-6" id="ehour">
+                            <option value="01">Hour</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <select class="form-control dateClass col-md-2 col-sm-6" id="emin">
+                            <option value="00">Minute</option>
+                            <option value="00">00</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            @for (int i = 11; i <= 59; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                        <select class="form-control dateClass col-md-2 col-sm-6" id="eampm">
+                            <option value="AM">AM/PM</option>
+                            <option value="PM">PM</option>
+                            <option value="AM">AM</option>
+                        </select>
+                     </div> 
+                    <div class="form-group">
+                        <label for="example-email">Assign To </label>
+                        <select class="form-control" name="AssignTo" id="AssignTo">
+                            @foreach (var item in users.Contacts)
+                                {
+                                <option value="@item.ContactId">@item.Name</option>
+                                }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="example-email">Status </label>
+                        <select class="form-control" id="StatusId" name="StatusId">
+                            @foreach (var item in status.statusList)
+                                {
+                                <option value="@item.Id">@item.StatusName</option>
+                                }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="example-email">Job Type </label>
+                        <select class="form-control" name="TypeId" id="TypeId">
+                            @foreach (var item in type.jobtype)
+                                {
+                                <option value="@item.Id">@item.Name</option>
+                                }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="example-email">Description </label>
+                        <textarea id="desc" class="form-control" rows="6"></textarea>
+                    </div>
+                    <div id="errordiv" class="form-group" style="display:none">
+                        <div class="alert alert-success alert-rounded">
+                            <span id="errortext"></span>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info waves-effect waves-light save-category" id="addSavebutton">Save</button>
+                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade none-border" id="eadd-new-event">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><strong>Edit</strong> Job</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                @using (Html.BeginForm("index", "job", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Job Name</label>
+                            <input type="text" id="eName" class="form-control" placeholder="Enter job Name" />
+                            <input type="hidden" id="eid" />
+                        </div>
+                        <div class="form-group">
+                            <label for="example-email">Po Number </label>
+                            <input type="text" id="ePoNumber" class="form-control" placeholder="Enter Po Number" />
+                        </div>
+                        <div class="form-group">
+                            <label>Job Start Date/Time</label><br />
+                            <input type="text" id="eStartDate" class="col-md-4 form-control" placeholder="Enter start date" />
+                            <select class="form-control dateClass col-md-2 col-sm-6" id="eshour">
+                                <option value="01">Hour</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            <select class="form-control dateClass col-md-2 col-sm-6" id="esmin">
+                                <option value="00">Minute</option>
+                                <option value="00">00</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                @for (int i = 11; i <= 59; i++)
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            </select>
+                            <select class="form-control dateClass col-md-2 col-sm-6" id="esampm">
+                                <option value="AM">AM/PM</option>
+                                <option value="PM">PM</option>
+                                <option value="AM">AM</option>
+                            </select>
+
+                         </div>
+                        <div class="form-group">
+                            <label>Job End Date/Time</label><br />
+                            <input type="text" id="eEndDate" class="col-md-4 form-control" placeholder="Enter End date" />
+                            <select class="form-control dateClass col-md-2 col-sm-6" id="eehour">
+                                <option value="01">Hour</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                            <select class="form-control dateClass col-md-2 col-sm-6" id="eemin">
+                                <option value="00">Minute</option>
+                                <option value="00">00</option>
+                                <option value="01">01</option>
+                                <option value="02">02</option>
+                                <option value="03">03</option>
+                                <option value="04">04</option>
+                                <option value="05">05</option>
+                                <option value="06">06</option>
+                                <option value="07">07</option>
+                                <option value="08">08</option>
+                                <option value="09">09</option>
+                                <option value="10">10</option>
+                                @for (int i = 11; i <= 59; i++)
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            </select>
+                            <select class="form-control dateClass col-md-2 col-sm-6" id="eeampm">
+                                <option value="AM">AM/PM</option>
+                                <option value="PM">PM</option>
+                                <option value="AM">AM</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="example-email">Assign To </label>
+                            <select class="form-control" name="AssignTo" id="eAssignTo">
+                                @foreach (var item in users.Contacts)
+                                {
+                                    <option value="@item.ContactId">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="example-email">Status </label>
+                            <select class="form-control" id="eStatusId" name="eStatusId">
+                                @foreach (var item in status.statusList)
+                                {
+                                    <option value="@item.Id">@item.StatusName</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="example-email">Job Type </label>
+                            <select class="form-control" name="TypeId" id="eTypeId">
+                                @foreach (var item in type.jobtype)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="example-email">Description </label>
+                            <textarea id="edesc" class="form-control" rows="6"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="Active"> </label>
+                            <div class="form-check">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" id="IsActive" class = "custom-control-input" />
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">Is Active</span>
+                                </label>
+                            </div>
+
+                        </div>
+                        <div id="eerrordiv" class="form-group" style="display:none">
+                            <div class="alert alert-success alert-rounded">
+                                <span id="eerrortext"></span>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info waves-effect waves-light save-category" id="eaddSavebutton">Update</button>
+                        <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="@Url.Content("~/assets/plugins/calendar/jquery-ui.min.js")"></script>
+<script src="@Url.Content("~/assets/plugins/calendar/dist/fullcalendar.min.js")"></script>
+<script src="@Url.Content("~/assets/plugins/calendar/dist/cal-init.js")"></script>

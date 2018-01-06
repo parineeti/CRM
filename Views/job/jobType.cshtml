@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "job Type";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+} 
+@model CRM.Database.tbljobType
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Add New Type</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("dashboard","login")">Home</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("JobTypeList","job")">Jobs</a></li>
+            <li class="breadcrumb-item active">Type</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card card-body">
+
+            @if (ViewData["error"] != null)
+            {
+                <div class="alert alert-success alert-rounded">
+                    @ViewData["error"]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                </div>
+            }
+            @using (Html.BeginForm("jobType", "job", FormMethod.Post, new { @class = "form-horizontal m-t-40" }))
+            {
+                <div class="form-group">
+                    <label>Type Name</label>
+                    @Html.TextBoxFor(a=>a.Name, new { @class = "form-control", @placeholder = "Enter type Name", @required = "required" })
+                </div>
+                <div class="form-group">
+                    <label for="example-email">Description </label>
+                   @Html.TextAreaFor(a=>a.Description,new {@class="form-control",@rows="6",@required="required" })
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Save</button>
+                    <a href="@Url.Action("JobTypeList","job")" class="btn btn-inverse waves-effect waves-light">Cancel</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

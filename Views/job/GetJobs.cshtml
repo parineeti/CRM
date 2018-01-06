@@ -1,0 +1,216 @@
+﻿@{
+    ViewBag.Title = "GetJobs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model CRM.Models.JobViewModel
+<link href="@Url.Content("~/assets/plugins/footable/css/footable.core.css")" rel="stylesheet">
+<link href="@Url.Content("~/css/pages/footable-page.css")" rel="stylesheet">
+@{
+    var pending = Model.pending;
+    var newstatus = Model.New ;
+    var complete = Model.complete;
+    var danger = Model.problem; 
+}
+
+@helper GetStatus(int id)
+    {
+    switch (id)
+    {
+        case 0:
+            <span>All</span>
+        break;
+    case 1:
+            <span>New</span>
+        break;
+    case 2:
+            <span>Pending</span>
+        break;
+    case 3:
+            <span>Problem</span>
+        break;
+    case 4:
+            <span>Complete</span>
+        break;
+}
+}
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Jobs</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("dashboard","login")">Home</a></li>
+            <li class="breadcrumb-item active">jobs</li>
+        </ol>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="row">
+    @if (!string.IsNullOrEmpty(Model.Error))
+    {
+        <div class="col-md-12  ">
+            <div class="alert alert-success alert-rounded">
+                @Model.Error
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+    }
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Job List (status :@GetStatus(Model.status))</h4>
+                <input type="hidden" id="StatusId" value="@Model.status" />
+                <h6 class="card-subtitle">List of Jobs opend by Managers</h6>
+                <div class="row m-t-40">
+                    <div class="col-md-6 col-lg-4 col-xlg-4">
+                        <div class="card" onclick="GetJobByStatus(0)">
+                            <div class="box bg-warning text-center">
+                                <h1 class="font-light text-white">Show All</h1>
+                                <h6 class="text-white">Jobs</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2 col-xlg-2">
+                        <div class="card" onclick="GetJobByStatus(1)">
+                            <div class="box bg-warning text-center">
+                                <h1 class="font-light text-white">@newstatus</h1>
+                                <h6 class="text-white">New</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-2 col-xlg-2">
+                        <div class="card" onclick="GetJobByStatus(2)">
+                            <div class="box bg-primary text-center">
+                                <h1 class="font-light text-white">@pending</h1>
+                                <h6 class="text-white">Pending</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-2 col-xlg-2">
+                        <div class="card" onclick="GetJobByStatus(3)">
+                            <div class="box bg-danger text-center">
+                                <h1 class="font-light text-white">@danger</h1>
+                                <h6 class="text-white">Problem</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <div class="col-md-6 col-lg-2 col-xlg-2">
+                        <div class="card" onclick="GetJobByStatus(4)">
+                            <div class="box bg-success text-center">
+                                <h1 class="font-light text-white">@complete</h1>
+                                <h6 class="text-white">Complete</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <div class="table-responsive">
+                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list" data-page-size="10">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>ID #</th>
+                                <th>Po</th>
+                                <th>Type</th>
+                                <th>Openby</th>
+                                <th>Date</th>
+                                <th>Assign to</th>
+                                <th>Status</th>
+                                <th>Detail</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model._jobs)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.name
+                                    </td>
+                                    <td>@item.JobId</td>
+                                    <td>@item.Po</td>
+                                    <td>@item.Type</td>
+                                    <td>
+                                        <a href="javascript:void(0)"><img src="@item.OpenByImage" alt="user" class="img-circle wdt30" /> @item.OpenBy</a>
+                                    </td>
+                                    <td>@item.Date</td>
+                                    <td>
+                                        <a href="javascript:void(0)"><img src="@item.AssignToImage" alt="user" class="img-circle wdt30" /> @item.AssignTo</a>
+                                    </td>
+                                    <td> <span class="label @item.Status">@item.Status</span></td>
+                                    <td>@item.Detail</td>
+                                    <td>
+                                        <a data-id='@item.JobId' class="editor_edit"><i class="ui-tooltip fa fa-pencil" style="font-size: 19px;padding-right: 12px;" data-original-title="Edit"></i></a>
+                                        <a name="deleteColumn" data-id='@item.JobId' class="editor_remove"><i class="ui-tooltip fa fa-trash-o" style="font-size: 12px;" data-original-title="Delete"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2">
+                                    <a href="@Url.Action("index","job")" class="btn btn-info waves-effect waves-light"><i class="fa fa-plus"></i>Add New Job</a>
+                                </td>
+                                <td colspan="6">
+                                    <div class="text-right">
+                                        <ul class="pagination"> </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="@Url.Content("~/assets/plugins/footable/js/footable.all.min.js")"></script>
+<script src="@Url.Content("~/js/footable-init.js")"></script>
+<script>
+    function GetJobByStatus(statusId) {
+        
+        var _url = "@Url.Action("getJobs", "job")" + "?statusId=" + statusId;
+        if (statusId == 0) {
+            _url = "@Url.Action("getJobs", "job")";
+        }
+        location.href = _url;
+    }
+
+    $('#demo-foo-addrow').on('click', 'a.editor_edit', function (e) {
+        e.preventDefault();
+        var _status = $("#StatusId").val();
+        var d = $(this).data('id');
+        var _url = "@Url.Action("index", "job")" + "?id=" + d + "&statusId=" + _status;
+        if (_status == 0) {
+            _url = "@Url.Action("index", "job")" + "?id=" + d;
+        }
+        location.href = _url;
+    });
+
+
+    $('#demo-foo-addrow').on('click', 'a.editor_remove', function (e) {
+        e.preventDefault();
+        var d = $(this).data('id');
+        var _status = $("#StatusId").val();
+        var r = confirm("are you sure to delete ?");
+        if (r == true) {
+            var _url = "@Url.Action("getJobs", "job")" + "?id=" + d + "&statusId=" + _status;
+            if (_status == 0) {
+                _url = "@Url.Action("getJobs", "job")" + "?id=" + d;
+            }
+            location.href = _url;
+        }
+    });
+</script>
+
+
+

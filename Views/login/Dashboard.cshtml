@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model CRM.Models.DashboardViewModel
+<link href="@Url.Content("~/assets/plugins/footable/css/footable.core.css")" rel="stylesheet">
+<link href="@Url.Content("~/css/pages/footable-page.css")" rel="stylesheet">
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">DashBoard</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Today's Job List</h4>
+                <div class="table-responsive">
+                    <table id="demo-foo-addrow" class="table m-t-30 table-hover no-wrap contact-list" data-page-size="10">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Po</th>
+                                <th>Type</th>
+                                <th>Openby</th>
+                                <th>Assign to</th>
+                                <th>Status</th>
+                                <th>Detail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model._jobs)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.name
+                                    </td>
+                                    <td>@item.Po</td>
+                                    <td>@item.Type</td>
+                                    <td>
+                                        <a href="javascript:void(0)"><img src="@item.OpenByImage" alt="user" class="img-circle wdt30" /> @item.OpenBy</a>
+                                    </td>
+                                    <td>
+                                        <a href="javascript:void(0)"><img src="@item.AssignToImage" alt="user" class="img-circle wdt30" /> @item.AssignTo</a>
+                                    </td>
+                                    <td> <span class="label @item.Status">@item.Status</span></td>
+                                    <td>@item.Detail</td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2"></td>
+                                <td colspan="6">
+                                    <div class="text-right">
+                                        <ul class="pagination"> </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Total Contacts With Label</h4>
+                <div id="pie-chart3" style="width:100%; height:400px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Job By Status</h4>
+                <div id="pie-chart" style="width:100%; height:400px;"></div>
+            </div>
+        </div>
+    </div><div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Job By Type</h4>
+                <div id="pie-chart1" style="width:100%; height:400px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Current Week Job Status</h4>
+                <div id="main" style="width:100%; height:400px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Monthly Report Job Status</h4>
+                <div id="bar-chart" style="width:100%; height:400px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/assets/plugins/echarts/echarts-all.js")"></script>
+<script src="@Url.Content("~/assets/plugins/echarts/echarts-init.js")"></script>
+<script src="@Url.Content("~/assets/plugins/footable/js/footable.all.min.js")"></script>
+<script src="@Url.Content("~/js/footable-init.js")"></script>
+

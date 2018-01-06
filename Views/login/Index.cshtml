@@ -1,0 +1,253 @@
+﻿﻿
+@{
+    Layout = null; 
+}
+@model CRM.Models.LoginViewModel
+    @{
+string _page=Model.display;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Umesh Kumar">
+    <link rel="icon" type="image/png" sizes="16x16" href="@Url.Content("~/assets/images/favicon.png")">
+ <title>Login</title>
+    <script type="text/javascript" src="@Url.Content("~/js/jquery-1.9.1.min.js")"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <link href="@Url.Content("~/assets/plugins/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/css/style.css")" rel="stylesheet">
+    <link href="@Url.Content("~/css/pages/login-register-lock.css")" rel="stylesheet">
+    <link href="@Url.Content("~/css/colors/default-dark.css")" id="theme" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body class="card-no-border fix-sidebar">
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Crewtok</p>
+        </div>
+    </div>
+    <section id="wrapper">
+        <div class="login-register" id="loginDiv" style="@(_page == "register" ? "display:none" : "display:block")">
+            <div class="login-box card">
+                <div class="card-body">
+                    @using (Html.BeginForm("index", "login", FormMethod.Post, new { @enctype = "multipart/form-data", @id = "frmupload1" }))
+                    {   <div class="col-xs-6 col-md-6 col-sm-6 pull-left">
+                        <div class="form-group ">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
+                                <h3 class="box-title m-b-10 m-t-30 error"><strong>@Model.Error</strong></h3>
+                                @Html.ValidationMessageFor(a => a.Email)
+                                @Html.ValidationMessageFor(a => a.Password)
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
+                                <h3 class="box-title m-b-10 m-t-30"><strong>Login</strong></h3>
+                                <h5 class="box-title m-b-20">Sign in to your account</h5>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+                                    @Html.TextBoxFor(a => a.Email, new { @class = "form-control", @placeholder = "Email Address" })
+                                    <br />
+
+                                    @Html.HiddenFor(a => a.ReturnUrl)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa  fa-lock"></i></span>
+                                    @Html.TextBoxFor(a => a.Password, new { @class = "form-control", @placeholder = "Password", @type = "password" })
+
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group row">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
+                                <div class="col-xs-4 col-md-4 col-sm-4 pull-left">
+                                    <button class="btn btn-info waves-effect waves-light" type="submit">Log In</button>
+                                </div>
+                                <div class="col-xs-8 col-md-8 col-sm-8 pull-right">
+                                    <a href="javascript:void(0)" id="to-recover" class="pull-right m-t-10"><i class="fa fa-lock m-r-5"></i> Forgot password ?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-6 col-sm-6 pull-right divinfo text-center">
+                        <h3 class="box-title m-b-10 white m-t-70"><strong>Sign Up</strong></h3>
+                        <h5 class="box-title  white">
+                            You can register here 
+                        </h5>
+                        <h5 class="box-title white">
+                           </h5>
+                        <h5 class="box-title white m-b-20">
+                           </h5>
+                        <button class="btn btn-info waves-effect waves-light" id="regbutton" type="button">Register Now!</button>
+                    </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="login-register" id="registerDiv" style="@(_page == "register"?"display:block":"display:none")">
+            <div class="login-box card">
+                <div class="card-body">
+                    @using (Html.BeginForm("register", "login", FormMethod.Post, new { @enctype = "multipart/form-data", @id = "frmupload" }))
+                    {    <div class="col-xs-6 col-md-6 col-sm-6 pull-left">
+                        <div class="form-group ">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
+                                <h3 class="box-title m-b-10 m-t-30 error"><strong>@Model.Error</strong></h3>
+                                <span>
+                                    @Html.ValidationMessageFor(a => a.firstname)
+                                </span><span>
+
+                                    @Html.ValidationMessageFor(a => a.ConfirmPassword)
+                                </span>
+
+                                <span>@Html.ValidationMessageFor(a => a.lastname) </span>
+                                <span>  @Html.ValidationMessageFor(a => a.Email)</span>
+                                <span>    @Html.ValidationMessageFor(a => a.phoneNumber)</span>
+                                <span>@Html.ValidationMessageFor(a => a.Password)</span>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
+                                <h3 class="box-title m-b-10 m-t-30"><strong>SignUp</strong></h3>
+                                <h5 class="box-title m-b-20">Create new account</h5>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+                                    @Html.TextBoxFor(a => a.firstname, new { @class = "form-control", @placeholder = "FirstName" })
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group ">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user"></i></span>
+                                    @Html.TextBoxFor(a => a.lastname, new { @class = "form-control", @placeholder = "lastname" })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group ">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-inbox"></i></span>
+                                    @Html.TextBoxFor(a => a.Email, new { @class = "form-control", @placeholder = "Email" ,@id="emailid" })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-mobile"></i></span>
+                                    @Html.TextBoxFor(a => a.phoneNumber, new { @class = "form-control", @placeholder = "Phone Number" })
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <div class="form-group">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa  fa-lock"></i></span>
+                                    @Html.TextBoxFor(a => a.Password, new { @class = "form-control", @placeholder = "Password",@id="pwd" })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                                    @Html.TextBoxFor(a => a.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="form-group row">
+                            <div class="col-xs-12 col-md-12 col-sm-12">
+                                <div class="col-xs-4 col-md-4 col-sm-4 pull-left">
+                                    <button class="btn btn-info waves-effect waves-light" type="submit">Sign Up</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-md-6 col-sm-6 pull-right divinfo2 text-center">
+                        <h3 class="box-title m-b-10 white m-t-70"><strong>Already Register</strong></h3>
+                        <h5 class="box-title  white">
+                           </h5>
+                        <h5 class="box-title white">
+                             </h5>
+                        <h5 class="box-title white m-b-20">
+                          </h5>
+                        <button class="btn btn-info waves-effect waves-light" id="loginbutton" type="button">LogIn Now!</button>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="@Url.Content("~/assets/plugins/bootstrap/js/popper.min.js")"></script>
+    <script src="@Url.Content("~/assets/plugins/bootstrap/js/bootstrap.min.js")"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".preloader").fadeOut();
+        });
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+        $('#to-recover').on("click", function () {
+            $("#loginform").slideUp();
+            $("#recoverform").fadeIn();
+        });
+
+        $("#loginbutton").on("click", function () {
+            $("#loginDiv").fadeIn(1000);
+            $("#registerDiv").fadeOut(1000);
+            $(".error").html('');
+            $(".field-validation-error").css('display', 'none');
+            $(".field-validation-valid").css('display', 'none');
+
+        });
+
+        $("#regbutton").on("click", function () {
+            $("#loginDiv").fadeOut(1000);
+            $("#registerDiv").fadeIn(1000);
+            $(".error").html('');
+            $(".field-validation-error").css('display', 'none');
+            $(".field-validation-valid").css('display', 'none');
+        });
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Umesh Kumar">
+    <link rel="icon" type="image/png" sizes="16x16" href="@Url.Content("~/assets/images/favicon.png")">
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/css/pages/chat-app-page.css")" rel="stylesheet">
+    <script type="text/javascript" src="@Url.Content("~/js/jquery-1.9.1.min.js")"></script>
+    <link href="@Url.Content("~/assets/plugins/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
+    <link rel="stylesheet" href="@Url.Content("~/css/dataTables.bootstrap.min.css")" type="text/css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.0/css/responsive.bootstrap.min.css" type="text/css">
+    <script src="@Url.Content("~/Scripts/moment.js")"></script>
+    <link href="@Url.Content("~/assets/plugins/calendar/dist/fullcalendar.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/colors/default.css")" id="theme" rel="stylesheet">
+    <link href="@Url.Content("~/css/style.css")" rel="stylesheet">
+    <script src="@Url.Content("~/assets/plugins/bootstrap/js/popper.min.js")"></script>
+
+    <script src="@Url.Content("~/assets/plugins/bootstrap/js/bootstrap.min.js")"></script>
+
+    <script>
+        $(window).load(function(){
+            $(".close").on("click",function(){
+                $('.modal').modal('hide');
+            });
+        });
+    </script>
+    <style>
+        .modal-content {
+            width: 600px !important;
+            margin: 30px auto !important;
+        }
+
+        .model-header {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body class="fix-header fix-sidebar card-no-border">
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">CrewTok</p>
+        </div>
+    </div>
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="@Url.Action("dashboard","login")">
+                        <b>
+                            <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                        </b>
+                        <span>
+                            <strong>CrewTok</strong>
+                        </span>
+                    </a>
+                </div>
+                <div class="navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                    </ul>
+                    <ul class="navbar-nav my-lg-0">
+                        @{Html.RenderAction("getProfile", "json"); }
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="left-sidebar">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="user-profile">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img src="@Session["image"]" alt="user" /><span class="hide-menu">@Session["name"] </span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="@Url.Action("myprofile","home")">My Profile </a></li>
+                                <li><a href="@Url.Action("Index","login")">Logout</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-devider"></li>
+                        <li class="nav-small-cap">PERSONAL</li>
+                        <li class="">
+                            <a class="has-arrow waves-effect waves-dark" href="@Url.Action("dashboard","login")" aria-expanded="false">
+                                <i class="fa  fa-sliders"></i>
+                                <span class="hide-menu">
+                                    Dashboard
+                                </span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa  fa-users"></i><span class="hide-menu">Contacts</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="@Url.Action("labellist","contact")">Labels</a></li>
+                                <li><a href="@Url.Action("Index","contact")">Contacts</a></li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa fa-comments"></i><span class="hide-menu">Message</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="@Url.Action("index","chat")">Text</a></li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Jobs</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="@Url.Action("JobTypeList","job")">Job type</a></li>
+
+                                <li><a href="@Url.Action("GetJobs","job")">Jobs</a></li>
+                                
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa fa-calendar"></i><span class="hide-menu">calendar</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="@Url.Action("myjobs","job")">calendar</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script src="@Url.Content("~/js/waves.js")"></script>
+    <!--Menu sidebar -->
+    <script src="@Url.Content("~/js/sidebarmenu.js")"></script>
+    <script src="@Url.Content("~/js/perfect-scrollbar.jquery.min.js")"></script>
+    <script src="@Url.Content("~/js/custom.min.js")"></script>
+    <script src="@Url.Content("~/assets/plugins/sparkline/jquery.sparkline.min.js")"></script>
+
+</body>
+
+</html>

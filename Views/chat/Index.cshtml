@@ -1,0 +1,172 @@
+﻿@{
+    ViewBag.Title = "Text Message";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model CRM.Models.chatModel
+@{
+    string name = Model.name;
+    string image = Model.imageurl;
+    int aid = Model.aId;
+}
+<script>
+    jQuery.browser = {};
+    (function () {
+        jQuery.browser.msie = false;
+        jQuery.browser.version = 0;
+        if (navigator.userAgent.match(/MSIE ([0-9]+)\./)) {
+            jQuery.browser.msie = true;
+            jQuery.browser.version = RegExp.$1;
+        }
+    })();
+</script>
+<script>
+
+  function  GetChatById(id,aid)
+  {
+      var _urls = "@Url.Action("getChatById", "chat")";
+      $.post(_urls, { 'UserId': id,'aid':aid }, function (data) {
+          $("#hdnid").val(id);
+          $("#chatBox").html(data);
+          $(".all").removeClass("active");
+          $("#" + id).addClass("active");
+          $('#chatBox').animate({
+              scrollTop: $('#testSpan').offset().top
+          }, 'slow');
+      });
+  }
+
+    function  addChat()
+    {
+        var userId = $("#hdnid").val();
+        var text = $("#chattext").val();
+        var time = new Date().toLocaleTimeString('en-US', {
+            hour12: true,
+            hour: "numeric",
+            minute: "numeric"
+        });
+        var time2 = new Date().toLocaleTimeString('en-US', {
+            hour12: false,
+            hour: "numeric",
+            minute: "numeric"
+        });
+        var _id=parseInt(time2.split(':')[0],10)+parseInt(time2.split(':')[1]);
+        var _li = "<li   class='reverse'><div  class='chat-content'><h5>@name</h5><div class='box bg-light-inverse'>" + text + "</div></div><div class='chat-img'><img src='@image' alt='user'/></div><div class='chat-time'>" + time + "</div></li><div id='" + _id + "'></div>";
+        if (text != '') {
+            var _urls = "@Url.Action("AddChat", "chat")";
+            $.post(_urls, { 'UserId': userId, 'Text': text }, function (data) {
+
+            });
+            $("#chattext").val('');
+            $("#testSpan").before(_li);
+            $('#chatBox').animate({
+                scrollTop: $('#chatBox')[0].scrollHeight
+            }, 'slow');
+        }
+    }
+
+    $(function () {
+        $('#srch').keyup(function () {
+            var searchText = $(this).val();
+            $('.chatonline > li').each(function () {
+                var currentLiText = $(this).text(),
+                    showCurrentLi = currentLiText.indexOf(searchText) !== -1;
+                $(this).toggle(showCurrentLi);
+            });
+        });
+
+    });
+</script>
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Message</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item active"><a href="@Url.Action("index","chat")">Text</a></li>
+        </ol>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card card-body">
+            @if (ViewData["Error"] != null)
+            {
+                <div class="alert alert-success alert-rounded">
+                    @ViewData["Error"]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card m-b-0">
+            <!-- .chat-row -->
+            <div class="chat-main-box">
+                <!-- .chat-left-panel -->
+                <div class="chat-left-aside">
+                    <div class="open-panel"><i class="ti-angle-right"></i></div>
+                    <div class="chat-left-inner">
+                        <div class="form-material">
+                            <input class="form-control p-20" type="text" placeholder="Search Contact" id="srch">
+                        </div>
+                        @{
+                            string imgname = "";
+                            int i = 0;
+                        }
+                        <ul class="chatonline style-none ">
+                            @foreach (var item in Model.chatList)
+                            {
+                                <li>
+                                    @{imgname = "~/" + item.image; }
+                                    <a id="@item.id" onclick="GetChatById('@item.id','@aid')" class="@(item.id==Model.selectedId?"active":"") all" href="javascript:void(0)"><img src="@Url.Content(imgname)" alt="user-img" class="img-circle"> <span>@item.name</span></a>
+                                    @if (i == 0)
+                                    {
+                                        <script>
+                                            GetChatById('@item.id', '@aid');
+                                        </script>
+                                    }
+                                </li>
+                                            i = 1;
+                                        }
+                            <li class="p-20"></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- .chat-left-panel -->
+                <!-- .chat-right-panel -->
+                <div class="chat-right-aside">
+                    <div class="chat-main-header">
+                        <div class="p-20 b-b">
+                            <h3 class="box-title">Text</h3>
+                            <input type="hidden" value="@Model.selectedId" id="hdnid" />
+                        </div>
+                    </div>
+                    <div class="chat-rbox" id="chatBox">
+
+                    </div>
+                    <div class="card-body b-t">
+                        <div class="row">
+                            <div class="col-8">
+                                <textarea id="chattext" placeholder="Type your message here" class="form-control b-0"></textarea>
+                            </div>
+                            <div class="col-4 text-right">
+                                <button type="button" onclick="addChat()" class="btn btn-info btn-circle btn-lg"><i class="fa fa-paper-plane-o"></i> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- .chat-right-panel -->
+            </div>
+            <!-- /.chat-row -->
+        </div>
+    </div>
+</div>
+
+<script src="@Url.Content("~/js/chat.js")"></script>
+
+

@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var tables = (CRM.Models.LabelModel)ViewData["labels"];
+}
+ 
+<script src="@Url.Content("~/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js")"></script>
+<link href="@Url.Content("~/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css")" rel="stylesheet">
+
+<script>
+    $(function () {
+        $("#Joiningdate").bootstrapMaterialDatePicker({ format: 'MM/DD/YYYY', minDate: new Date(), weekStart: 0, time: false, applyClass: 'btn-info' }).attr("readonly",true);
+          });
+</script>
+@model CRM.Database.tblcontact
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Add New Contact</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item active"><a href="@Url.Action("index","Contact")">Contacts</a></li>
+        </ol>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card card-body">
+             
+            @if (ViewData["Error"] != null)
+            {
+                <div class="alert alert-success alert-rounded">
+                    @ViewData["Error"]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                </div>
+            }
+            @using (Html.BeginForm("AddContact", "contact", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal m-t-40 col-md-6" }))
+            {
+                <div class="form-group">
+                    <label>Profile Image</label>
+                    <img id="image" src="#" style="display:none;width:50%" />
+                    <input class="form-control" type="file" name="file" id="file" />
+                    <script>
+                        document.getElementById("file").onchange = function () {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                // get loaded data and render thumbnail.
+                                document.getElementById("image").src = e.target.result;
+                                document.getElementById("image").style.display = 'block';
+                            };
+                            // read the image file as a data URL.
+                            reader.readAsDataURL(this.files[0]);
+                        };
+                    </script>
+
+                </div>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    @Html.TextBoxFor(a => a.Name, new { @class = "form-control", @placeholder = "Enter  Name", @required = "required" })
+                </div>
+                <div class="form-group">
+                    <label>Select Label</label>
+                    <select class="form-control" name="LabelId">
+                        @foreach (var item in tables._labelList)
+                        {
+                            <option value="@item.LabelId">@item.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="example-email">Email </label>
+                    @Html.TextBoxFor(a => a.email, new { @required = "required", @class = "form-control", @placeholder = "Enter Email Address" })
+                </div>
+                    <div class="form-group">
+                        <label for="example-email">Phone </label>
+                        @Html.TextBoxFor(a => a.phone, new { @required = "required", @class = "form-control", @placeholder = "Enter Mobile Number" })
+                    </div>
+                    <div class="form-group">
+                        <label for="example-email">Role </label>
+                        @Html.TextBoxFor(a => a.Role, new { @required = "required", @class = "form-control", @placeholder = "Enter Your Role" })
+                    </div>
+                    <div class="form-group">
+                        <label for="example-email">Age </label>
+                        @Html.TextBoxFor(a => a.Age, new { @required = "required", @class = "form-control", @placeholder = "Enter Age" })
+                    </div>
+                    <div class="form-group">
+                        <label for="example-email">Salary </label>
+                        @Html.TextBoxFor(a => a.salary, new { @required = "required", @class = "form-control", @placeholder = "Enter Salary" })
+                    </div>
+                    <div class="form-group">
+                        <label for="example-email">Joining date </label>
+                        @Html.TextBoxFor(a => a.Joiningdate, new { @required = "required", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Save</button>
+                        <a href="@Url.Action("index","contact")" class="btn btn-inverse waves-effect waves-light">Cancel</a>
+                    </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "status List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+} 
+<link href="@Url.Content("~/assets/plugins/footable/css/footable.core.css")" rel="stylesheet">
+
+@model CRM.Models.StatusViewModel
+ <div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Status</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item active">Status</li>
+        </ol>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="row">
+    @if (!string.IsNullOrEmpty(Model.Error))
+    {
+        <div class="col-md-12  ">
+            <div class="alert alert-success alert-rounded">
+                @Model.Error
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+    }
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                   Status 
+                </h4>
+                <h6 class="card-subtitle"></h6>
+                @{ int i = 1;}
+                <div class="table-responsive">
+                    <table id="demo-foo-addrow" class="table m-t-30 table-hover contact-list" data-page-size="10">
+                        <thead>
+                            <tr>
+                                <th>Sr No</th>
+                                <th>Name</th>
+                                <th>Color</th> 
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.statusList)
+                            {
+                                <tr>
+                                    <td>@i</td>
+                                    <td>@item.StatusName</td>
+                                    <td>@item.Color</td>
+                                    <td><a data-id='+@item.Id+' class="editor_edit"><i class="ui-tooltip fa fa-pencil" style="font-size: 19px;padding-right: 12px;" data-original-title="Edit"></i></a></td>
+                                </tr>
+                                i = i + 1;
+                            } 
+                        </tbody> 
+                    </table>
+                    <div class="clearfix"></div>
+                    <a class="btn btn-info btn-rounded" href="@Url.Action("status","job")"><i class="fa fa-plus text-white"></i>Add New Status</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="@Url.Content("~/assets/plugins/footable/js/footable.all.min.js")"></script>
+ <script src="@Url.Content("~/js/footable-init.js")"></script>
+<script> 
+    $('#demo-foo-addrow').on('click', 'a.editor_edit', function (e) {
+        e.preventDefault();
+        var d = $(this).data('id');
+        var _url = "@Url.Action("status", "job")" + "?id=" + d;
+        location.href = _url;
+    });
+</script>
+

@@ -1,0 +1,54 @@
+﻿@model CRM.Models.chatModel
+@{int id = 0;
+    int xaid = Model.aId;
+    }
+<script>
+    reciver();
+     function reciver()
+     {
+         setInterval(function () {
+        var _url = "@Url.Action("getChatnewById", "chat")";
+        var msgId = $("#hdnmsgId").val();
+        var userId = $("#hdnuserId").val();
+        $.post(_url, { 'UserId': userId, 'maxid': msgId,'aid':'@xaid' }, function (data) {
+            $("#testSpan").before(data); 
+            if ($.trim(data) != "") {
+                $('#chatBox').animate({
+                    scrollTop: $('#chatBox')[0].scrollHeight
+                }, 'slow');
+            }
+        });
+    },6000)
+}
+</script>
+<ul class="chat-list p-20" id="newChat">
+    @foreach (var item in Model.msgItem)
+    {
+        if (item.userId == item.sender)
+        {
+            <li>
+                <div class="chat-img"><img src="@item.Image" alt="user" /></div>
+                <div class="chat-content">
+                    <h5>@item.Name</h5>
+                    <div class="box bg-light-info">@item.message</div>
+                </div>
+                <div class="chat-time">@item.Time</div>
+            </li>
+        }
+        else
+        {
+            <li class="reverse">
+                <div class="chat-content">
+                    <h5>@item.Name</h5>
+                    <div class="box bg-light-inverse">@item.message</div>
+                </div>
+                <div class="chat-img"><img src="@item.Image" alt="user" /></div>
+                <div class="chat-time">@item.Time</div>
+            </li>
+        }
+        id = item.messageId;
+    }
+    <span id="testSpan"></span>
+    <input type="hidden" id="hdnmsgId" value="@id" />
+    <input type="hidden" id="hdnuserId" value="@Model.xid" />
+</ul>

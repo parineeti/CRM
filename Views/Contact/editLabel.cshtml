@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Label";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model CRM.Models.Labelitem
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Edit Label (@Model.Name)</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("dashboard","login")">Home</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("labellist","Contact")">LabelList</a></li>
+            <li class="breadcrumb-item active">Label</li>
+        </ol>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card card-body">
+           
+            @if (!string.IsNullOrEmpty(Model.Error))
+            {<div class="alert alert-success alert-rounded">
+               @Model.Error
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+            </div> 
+            }
+            @using (Html.BeginForm("editlabels", "contact", FormMethod.Post, new { @class = "form-horizontal m-t-40" }))
+            {
+                  <div class="form-group">
+                    <label>Label </label>
+                    @Html.TextBoxFor(a => a.Name, new { @class = "form-control", @placeholder = "Enter Label Name", @required = "required" })
+                    @Html.HiddenFor(a => a.LabelId)
+                </div>
+                <div class="form-group">
+                    <label for="example-email">Description </label>
+                    @Html.TextAreaFor(a => a.description, new { @required = "required", @class = "form-control", @placeholder = "Enter Label Description", @rows = "6" })
+                </div>
+                <div class="form-group">
+                    <label for="Active"> </label>
+                   <div class="form-check">
+                        <label class="custom-control custom-checkbox"> 
+                            @Html.CheckBoxFor(a => a.Active, new { @class = "custom-control-input" })
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Is Active</span> 
+                        </label>
+                    </div>
+                
+                 </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Update</button>
+                    <a href="@Url.Action("LabelList","contact")" class="btn btn-inverse waves-effect waves-light">Cancel</a>
+
+                </div>
+            }
+        </div>
+    </div>
+</div>

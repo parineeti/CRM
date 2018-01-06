@@ -1,0 +1,240 @@
+﻿
+@{
+    ViewBag.Title = "job";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model CRM.Database.tblJobMaster
+@{
+    var type = (CRM.Models.jobtypeViewModal)ViewData["type"];
+    var status = (CRM.Models.StatusViewModel)ViewData["status"];
+    var users = (CRM.Models.ContactViewModal)ViewData["users"];
+    var StatusId = (int)ViewData["statusId"];
+
+    var s1 = Model.StartDate.Value.ToString("MM/dd/yyyy hh:mm:ss tt");
+    var s2 = Model.EndDate.Value.ToString("MM/dd/yyyy hh:mm:ss tt");
+    var s1split = s1.Split(' ');
+    var s2split = s2.Split(' ');
+    var shour = Convert.ToInt16(s1split[1].Split(':')[0]);
+    var smin = Convert.ToInt16(s1split[1].Split(':')[1]);
+    var sampm = Convert.ToString(s1split[2]);
+    var ehour = Convert.ToInt16(s2split[1].Split(':')[0]);
+    var emin = Convert.ToInt16(s2split[1].Split(':')[1]);
+    var eampm = Convert.ToString(s2split[2]);
+
+    }
+<script src="@Url.Content("~/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js")"></script>
+<link href="@Url.Content("~/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css")" rel="stylesheet">
+
+<script>
+    $(function () {
+        $("#StartDate").bootstrapMaterialDatePicker({ format: 'MM/DD/YYYY', minDate: new Date(), weekStart: 0, time: false, applyClass: 'btn-info' });
+        $("#EndDate").bootstrapMaterialDatePicker({ format: 'MM/DD/YYYY', minDate: new Date(), weekStart: 0, time: false, applyClass: 'btn-info' });
+    });
+</script>
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Edit @Model.Name</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("dashboard","login")">Home</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("getjobs","job")">Jobs</a></li>
+            <li class="breadcrumb-item active">Edit Jobs</li>
+
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card card-body">
+            @if (ViewData["error"] != null)
+            {
+                <div class="alert alert-success alert-rounded">
+                    @ViewData["error"]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                </div>
+            }
+            @using (Html.BeginForm("editjob", "job", FormMethod.Post, new { @class = "form-horizontal m-t-40" }))
+            {
+                <div class="form-group">
+                    <label>Job Name</label>
+                    @Html.TextBoxFor(a => a.Name, new { @class = "form-control", @placeholder = "Enter Job Name", @required = "required" })
+                    @Html.HiddenFor(a=>a.Id)
+                    <input type="hidden" name="JobStatusId" value="@StatusId" />
+                </div>
+                <div class="form-group">
+                    <label for="example-email">Po Number </label>
+                    @Html.TextBoxFor(a => a.PoNumber, new { @class = "form-control", @placeholder = "Enter Po Number" })
+                </div>
+                <div class="form-group">
+                    <label>Job Start Date/Time</label><br />
+                    @Html.TextBoxFor(a => a.StartDate, "{0:MM/dd/yyyy}", new { @class = "form-control dateClass col-md-3 col-sm-6", @placeholder = "Enter Job Start date/Time", @required = "required" })
+                    <select class="form-control dateClass col-md-2 col-sm-6" name="shour">
+                        <option value="01">Hour</option>
+                        <option value="01" @(shour==01?"selected":"")>01</option>
+                        <option value="02" @(shour==02?"selected":"")>02</option>
+                        <option value="03" @(shour==03?"selected":"")>03</option>
+                        <option value="04" @(shour==04?"selected":"")>04</option>
+                        <option value="05" @(shour==05?"selected":"")>05</option>
+                        <option value="06" @(shour==06?"selected":"")>06</option>
+                        <option value="07" @(shour==07?"selected":"")>07</option>
+                        <option value="08" @(shour==08?"selected":"")>08</option>
+                        <option value="09" @(shour==09?"selected":"")>09</option>
+                        <option value="10" @(shour==10?"selected":"")>10</option>
+                        <option value="11" @(shour==11?"selected":"")>11</option>
+                        <option value="12" @(shour==12?"selected":"")>12</option>
+                    </select>
+                    <select class="form-control dateClass col-md-2 col-sm-6" name="smin">
+                        <option value="00" >Minute</option>
+                        <option value="00" @(smin==00?"selected":"")>00</option>
+                        <option value="01" @(smin==01?"selected":"")>01</option>
+                        <option value="02" @(smin==02?"selected":"")>02</option>
+                        <option value="03" @(smin==03?"selected":"")>03</option>
+                        <option value="04" @(smin==04?"selected":"")>04</option>
+                        <option value="05" @(smin==05?"selected":"")>05</option>
+                        <option value="06" @(smin==06?"selected":"")>06</option>
+                        <option value="07" @(smin==07?"selected":"")>07</option>
+                        <option value="08" @(smin==08?"selected":"")>08</option>
+                        <option value="09" @(smin==09?"selected":"")>09</option>
+                        <option value="10" @(smin==10?"selected":"")>10</option>
+                        @for (int i = 11; i <= 59; i++)
+                        {
+                            <option value="@i" @(smin==i?"selected":"")>@i</option>
+                        }
+                    </select>
+                    <select class="form-control dateClass col-md-2 col-sm-6" name="sampm">
+                        <option value="AM">AM/PM</option>
+                        <option value="PM" @(sampm.ToUpper()=="PM"?"selected":"")>PM</option>
+                        <option value="AM" @(sampm.ToUpper()=="AM"?"selected":"")>AM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Job End Date/Time</label><br />
+                    @Html.TextBoxFor(a => a.EndDate, "{0:MM/dd/yyyy}", new { @class = "col-md-3 col-sm-6 form-control dateClass", @placeholder = "Enter Job End date/Time", @required = "required" })
+                    <select class="form-control dateClass col-md-2 col-sm-6" name="ehour">
+                        <option value="01">Hour</option>
+                        <option value="01" @(ehour==01?"selected":"")>01</option>
+                        <option value="02"  @(ehour==02?"selected":"")>02</option>
+                        <option value="03"  @(ehour==03?"selected":"")>03</option>
+                        <option value="04"  @(ehour==04?"selected":"")>04</option>
+                        <option value="05"  @(ehour==05?"selected":"")>05</option>
+                        <option value="06"  @(ehour==06?"selected":"")>06</option>
+                        <option value="07"  @(ehour==07?"selected":"")>07</option>
+                        <option value="08"  @(ehour==08?"selected":"")>08</option>
+                        <option value="09"  @(ehour==09?"selected":"")>09</option>
+                        <option value="10"  @(ehour==10?"selected":"")>10</option>
+                        <option value="11"  @(ehour==11?"selected":"")>11</option>
+                        <option value="12"  @(ehour==12?"selected":"")>12</option>
+                    </select>
+                    <select class="form-control dateClass col-md-2 col-sm-6" name="emin">
+                        <option value="00">Minute</option>
+                        <option value="00" @(emin==00?"selected":"")>00</option>
+                        <option value="01" @(emin==01?"selected":"")>01</option>
+                        <option value="02" @(emin==02?"selected":"")>02</option>
+                        <option value="03" @(emin==03?"selected":"")>03</option>
+                        <option value="04" @(emin==04?"selected":"")>04</option>
+                        <option value="05" @(emin==05?"selected":"")>05</option>
+                        <option value="06" @(emin==06?"selected":"")>06</option>
+                        <option value="07" @(emin==07?"selected":"")>07</option>
+                        <option value="08" @(emin==08?"selected":"")>08</option>
+                        <option value="09" @(emin==09?"selected":"")>09</option>
+                        <option value="10" @(emin==10?"selected":"")>10</option>
+                        @for (int i = 11; i <= 59; i++)
+                        {
+                            <option value="@i" @(emin==i?"selected":"")>@i</option>
+                        }
+                    </select>
+                    <select class="form-control dateClass col-md-2 col-sm-6" name="eampm">
+                        <option value="AM">AM/PM</option>
+                        <option value="PM"  @(eampm.ToUpper()=="PM"?"selected":"")>PM</option>
+                        <option value="AM"  @(eampm.ToUpper()=="AM"?"selected":"")>AM</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="example-email">Assign To </label>
+                    <select class="form-control" name="AssignTo">
+                        @foreach (var item in users.Contacts)
+                        {
+                            if (Model.Id == item.ContactId)
+                            {
+                                <option selected="selected" value="@item.ContactId">@item.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@item.ContactId">@item.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="example-email">Status </label>
+                    <select class="form-control" name="StatusId">
+                        @foreach (var item in status.statusList)
+                        {
+                            if (Model.StatusId == item.Id)
+                            {
+                                <option selected="selected" value="@item.Id">@item.StatusName</option>
+                            }
+                            else
+                            {
+                                <option value="@item.Id">@item.StatusName</option>
+                            }
+
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="example-email">Job Type </label>
+                    <select class="form-control" name="TypeId">
+                        @foreach (var item in type.jobtype)
+                        {
+                            if (Model.Id == item.Id)
+                            {
+                                <option selected="selected" value="@item.Id">@item.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="example-email">Description </label>
+                    @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @rows = "6", @required = "required" })
+                </div>
+                <div class="form-group">
+                    <label for="Active"> </label>
+                    <div class="form-check">
+                        <label class="custom-control custom-checkbox">
+                            @Html.CheckBoxFor(a => a.IsActive.Value, new { @class = "custom-control-input" })
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Is Active</span>
+                        </label>
+                    </div>
+
+                </div>
+                <input type="hidden" name="IsActive" value="@(Model.IsActive.Value==true?"true":"false")" id="chk" />
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Update</button>
+                    <a href="@Url.Action("getjobs","job")" class="btn btn-inverse waves-effect waves-light">Cancel</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    $(".custom-control-input").on("click",function(){
+        var _val = $("#chk").val();
+        if(_val=="True"||_val=="true")
+        {
+            $("#chk").val(false);
+        }else
+        {
+            $("#chk").val(true);
+        }
+    });
+</script>

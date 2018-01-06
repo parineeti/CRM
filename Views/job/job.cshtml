@@ -1,0 +1,200 @@
+﻿
+@{
+    ViewBag.Title = "job";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model CRM.Database.tblJobMaster
+@{
+    var type = (CRM.Models.jobtypeViewModal)ViewData["type"];
+    var status = (CRM.Models.StatusViewModel)ViewData["status"];
+    var users = (CRM.Models.ContactViewModal)ViewData["users"];
+     
+}
+<script src="@Url.Content("~/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js")"></script>
+<link href="@Url.Content("~/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css")" rel="stylesheet">
+ 
+<script>
+    $(function () {
+        $("#StartDate").bootstrapMaterialDatePicker({ format: 'MM/DD/YYYY', minDate: new Date() ,weekStart: 0, time: false,applyClass: 'btn-info' });
+        $("#EndDate").bootstrapMaterialDatePicker({ format: 'MM/DD/YYYY', minDate: new Date(), weekStart: 0, time: false, applyClass: 'btn-info' });
+         });
+</script>
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Add New Job</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("dashboard","login")">Home</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("getjobs","job")">Jobs</a></li>
+            <li class="breadcrumb-item active">Create Jobs</li>
+
+         </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card card-body">
+            @if (ViewData["error"] != null)
+            {
+                <div class="alert alert-success alert-rounded">
+                    @ViewData["error"]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                </div>
+            }
+            @using (Html.BeginForm("index", "job", FormMethod.Post, new { @class = "form-horizontal m-t-40" }))
+            {
+                <div class="form-group">
+                    <label>Job Name</label>
+                    @Html.TextBoxFor(a => a.Name, new { @class = "form-control", @placeholder = "Enter Job Name", @required = "required" })
+                </div>
+                <div class="form-group">
+                    <label for="example-email">Po Number </label>
+                    @Html.TextBoxFor(a => a.PoNumber, new { @class = "form-control", @placeholder = "Enter Po Number" })
+                </div>
+                <div class="form-group">
+                    <label>Job Start Date/Time</label><br/>
+                    @Html.TextBoxFor(a => a.StartDate, new { @class = "form-control dateClass col-md-3 col-sm-6", @placeholder = "Enter Job Start date/Time", @required = "required" })
+                    <select class = "form-control dateClass col-md-2 col-sm-6" name="shour">
+                        <option value="01">Hour</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <select class="form-control dateClass col-md-2 col-sm-6" name="smin">
+                        <option value="00">Minute</option>
+                        <option value="00">00</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        @for (int i = 11; i <= 59; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                    <select class="form-control dateClass col-md-2 col-sm-6" name="sampm">
+                        <option value="AM">AM/PM</option>
+                        <option value="PM">PM</option>
+                        <option value="AM">AM</option> 
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Job End Date/Time</label><br />
+                    @Html.TextBoxFor(a => a.EndDate, new { @class = "col-md-3 col-sm-6 form-control dateClass", @placeholder = "Enter Job End date/Time", @required = "required" })
+                    <select class="form-control dateClass col-md-2 col-sm-6" name="ehour">
+                        <option value="01">Hour</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <select class="form-control dateClass col-md-2 col-sm-6" name="emin">
+                        <option value="00">Minute</option>
+                        <option value="00">00</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        @for (int i = 11; i <= 59; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                    <select class="form-control dateClass col-md-2 col-sm-6" name="eampm">
+                        <option value="AM">AM/PM</option>
+                        <option value="PM">PM</option>
+                        <option value="AM">AM</option>
+                    </select>
+                 </div>
+                 
+                <div class="form-group">
+                    <label for="example-email">Assign To </label>
+                    <select class="form-control" name="AssignTo">
+                        @foreach (var item in users.Contacts)
+                        {
+                            if (Model.Id == item.ContactId)
+                            {
+                                <option selected="selected" value="@item.ContactId">@item.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@item.ContactId">@item.Name</option>
+                            } 
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="example-email">Status </label>
+                    <select class="form-control" name="StatusId">
+                        @foreach (var item in status.statusList)
+                        {
+                            if (Model.StatusId == item.Id)
+                            {
+                                <option selected="selected" value="@item.Id">@item.StatusName</option>
+                            }
+                            else
+                            {
+                                <option value="@item.Id">@item.StatusName</option>
+                            }
+
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="example-email">Job Type </label>
+                    <select class="form-control" name="TypeId">
+                        @foreach (var item in type.jobtype)
+                        {
+                            if (Model.Id == item.Id)
+                            {
+                                <option selected="selected" value="@item.Id">@item.Name</option>
+                            }
+                            else
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            } 
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="example-email">Description </label>
+                    @Html.TextAreaFor(a => a.Detail, new { @class = "form-control", @rows = "6", @required = "required" })
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info waves-effect waves-light m-r-10">Save</button>
+                    <a href="@Url.Action("getjobs","job")" class="btn btn-inverse waves-effect waves-light">Cancel</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

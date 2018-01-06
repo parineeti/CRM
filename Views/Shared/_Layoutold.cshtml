@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Umesh Kumar">
+    <link rel="icon" type="image/png" sizes="16x16" href="@Url.Content("~/assets/images/favicon.png")">
+    <title>@ViewBag.Title</title>
+    <script type="text/javascript" src="@Url.Content("~/js/jquery-1.9.1.min.js")"></script>
+    <link href="@Url.Content("~/assets/plugins/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/css/style.css")" rel="stylesheet">
+    <link href="@Url.Content("~/css/colors/default-dark.css")" id="theme" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        .modal-content {
+            width: 600px !important;
+            margin: 30px auto !important;
+        }
+        .model-header{
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body class="fix-sidebar card-no-border">
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">CrewTok</p>
+        </div>
+    </div>
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                        <b>
+                            <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <img src="../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                        </b>
+                        <span>
+                            <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                            <strong>CrewTok</strong>
+                        </span>
+                    </a>
+                </div>
+                <div class="navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                    </ul>
+                    <ul class="navbar-nav my-lg-0">
+                       @{Html.RenderAction("getProfile", "json"); }
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="side-mini-panel1">
+            <ul class="mini-nav1">
+                <ul class="sidebar-menu1">
+                    <li class="selected"><a href="javascript:void(0)"><i class="fa  fa-sliders"></i> Dashboard</a></li>
+                    <li><a href="@Url.Action("index","contact")"><i class="fa  fa-users"></i> Contact</a></li>
+                    <li><a href="@Url.Action("index","chat")"><i class="fa  fa-comments"></i> Message</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa  fa-home"></i> Jobs</a></li>
+                    <li><a href="javascript:void(0)"><i class="fa  fa-calendar"></i> Calender</a></li>
+                </ul>
+            </ul>
+        </div>
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                <div id="modal-container" class="modal fade"
+                     tabindex="-1" role="dialog">
+                    <div class="modal-content">
+                    </div>
+                </div>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script src="@Url.Content("~/assets/plugins/bootstrap/js/popper.min.js")"></script>
+    <script src="@Url.Content("~/assets/plugins/bootstrap/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/js/perfect-scrollbar.jquery.min.js")"></script> 
+    <script src="@Url.Content("~/js/custom.min.js")"></script>
+      
+</body>
+</html>

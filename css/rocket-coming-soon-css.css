@@ -1,0 +1,998 @@
+/* ----------------------------------- */
+/*
+- Thank you for purchasing the multi-purpose Rocket - Coming Soon Template from hBeThemes.
+- You can edit the colours and images of the page below, comments have been included. Open the "readme.pdf" file for more guidance.
+- It's recommended that you leave the names of the div's (.name or #name) as they are, changing them will disrupt the layout and responsive design.
+/*
+/* ----------------------------------- */
+
+
+
+
+
+
+
+
+/*------------------------------------------------------------------
+
+[Table of contents]
+
+1. Colour Scheme
+    1.1 Primary colour scheme
+    1.2 Secondary colour scheme
+    1.3 Tertiary colour scheme
+2. Logo
+3. Images and Backgrounds
+    3.1 Main content background
+    3.2 Main content filter colour
+    3.3 Side content background
+    3.4 About image
+    3.5 Notify popup background
+
+4. Reset
+5. Body
+    5.1 HTML
+    5.2 Body
+    5.3 Scroll bar
+6. Text
+    6.1 H1
+    6.2 H2
+    6.3 H3
+    6.4 H4
+    6.5 P
+7. Buttons
+    7.1 Btn
+    7.2 Btn mask
+    7.3
+8. Table
+    8.1 Table
+    8.2 Table row
+    8.3 Table cell
+9. Layout
+    9.1 Margin bottom
+    9.2 Margin top
+10. Form
+    10.1 Reset
+    10.2 Input
+    10.3 Textarea
+    10.4 Button
+    10.5 Placeholder colour scheme
+11. Form error / success
+    11.1 Form error
+    11.2 Form success
+    11.3 Slide animation
+    11.4 Form error / success close button
+    11.5 Form error / success message
+12. Smooth animation
+13. Smooth page load animation
+14. Table layout
+    14.1 Table height
+    14.2 Top table left
+    14.3 Top table right
+15. Main content
+    15.1 Main content filter
+    15.2 Main content container
+    15.3 Main logo
+16. Countdown
+17. Slider
+    17.1 Coming soon slider div and h1
+`   17.2 Coming soon text slider animation
+    17.3 Coming soon text style
+18. Notify button
+19. Social icon style
+    19.1 Social icon images
+20. Side content
+    20.1 Side content container
+    20.2 More info btn margin
+    20.3 Copyright style
+21. Popup
+    21.1 Notify popup container
+    21.2 Popup close button
+    21.3 Notify popup split
+22. About section
+    22.1 About table cell left
+    22.2 About image
+    22.3 About description container
+    22.4 About tiles
+23. About tile
+    23.1 About tile content
+    23.2 About tile contact button
+24. Contact section
+    24.1 Contact section
+    24.2 Contact section form
+    24.3 Contact info
+    24.4 Contact info icon style
+    24.5 Contact info icon images
+    24.6 Contact info text
+
+
+-------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+/* 1 */
+/* ----------------------------------- */
+/* ---------- Colour Scheme ---------- */
+/* ----------------------------------- */
+
+/* 1.1 */
+.primary-colour {color: #FA6161;} /* Change the hex value to the colour you want, use www.colorpicker.com */
+.primary-background-colour {background-color: #FA6161;} /* Make sure this hex value matches the one above */
+
+/* 1.2 */
+.secondary-colour {color: #333333;} /* Change the hex value to the colour you want, use www.colorpicker.com */
+.secondary-background-colour {background-color: #333333;} /* Make sure this hex value matches the one above */
+
+/* 1.3 */
+.tertiary-colour {color: #737373;} /* Change the hex value to the colour you want, use www.colourpicker.com */
+.tertiary-background-colour {background-color: #737373;} /* Make sure this hex value matches the one above */
+
+/*
+- The primary colour is responsible for the main button background and highlighted text, it's currently bright orange.
+- The secondary colour is responsible for the text colour and other buttons, it's currently very dark grey.
+- The tertiary colour is responsible for sub-titles and paragraph text colour, it's currently light grey.
+*/
+
+
+
+
+
+
+
+
+/* 2 */
+/* ----------------------------------- */
+/* -------------- Logo --------------- */
+/* ----------------------------------- */
+#main-logo-image {
+    background-image: url('../rocket-logo.png'); /* Change the URL to your logo */
+    height: 36px; /* Change the height of your logo (in pixels [px]) */
+    width: 200px; /* Change the width of your logo (in pixels [px]) */
+}
+
+
+
+
+
+
+
+
+/* 3 */
+/* ----------------------------------- */
+/* ----- Images and Backgrounds ------ */
+/* ----------------------------------- */
+
+/* 3.1 */
+.main-content-background {background-image: url('../image-placeholder.png');} /* This is the background of the section with the 'Coming Soon' text. Change the URL so it directs to the image you want. If you want a solid background colour rather than an image, change the text to "background-color: #FF0000;" (remember to change the HEX value to the colour you want)*/
+
+/* 3.2 */
+#main-content-filter-colour {background: rgba(255, 255, 255, 0.75);} /* This makes the background above appear whitewashed, making it easier to read. Increase 0.75 to make background whiter, decrease to soften. To make a background appear darker change to rgba(0, 0, 0, 0.75). Delete this if you are using a solid colour rather than an image */
+
+/* 3.3 */
+#side-content-background {background-color: #FFF;} /* This is the background of the section with the 'More Info' and 'Contact Us' button, it's currently white. If you wish to change the background colour, change the HEX value. */
+
+/* 3.4 */
+#about-image {background-image: url('../image-placeholder.png');} /* This is the large image within the about section. Change the URL so it directs to the image you want. */
+
+/* 3.5 */
+#notify-popup-background {background-color: #FFF;} /* This is the background of 'notify me' popup box, it's currently white. If you wish to change the background colour, change the HEX value. */
+
+
+
+
+
+
+
+
+
+
+
+/* ----------------------------------- */
+/* ------------ Other CSS ------------ */
+/* ----------------------------------- */
+/* Do not edit below here unless you know what you're doing */
+
+/* 4 */
+/* - Reset - */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:top}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+
+
+
+
+
+
+
+/* 5 */
+/* - Main body - */
+
+/* 5.1 */
+html {
+    height: 100%;
+}
+
+/* 5.2 */
+body {
+    font-family: 'Poppins', sans-serif; /* If you have changed font replace font-family here */
+    font-size: 14px;
+    font-style: normal;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+* {-webkit-overflow-scrolling: touch;}
+
+/* 5.3 */
+::-webkit-scrollbar {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.24);
+    border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.26);
+    border-radius: 0;
+}
+::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 0;
+}
+
+
+
+
+
+
+
+
+/* 6 */
+/* - Text - */
+
+/* 6.1 */
+h1 {
+    font-size: 90px;
+    font-weight: 600;
+    line-height: 110px;
+}
+
+/* 6.2 */
+h2 {
+    font-size: 34px;
+    line-height: 42px;
+    margin-bottom: 20px;
+}
+
+/* 6.3 */
+h3 {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 35px;
+    margin-bottom: 20px;
+}
+
+/* 6.4 */
+h4 {
+    font-size: 28px;
+    line-height: 34px;
+    margin-bottom: 20px;
+}
+
+/* 6.5 */
+p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+
+
+
+
+
+
+
+/* 7 */
+/* - Buttons - */
+
+/* 7.1 */
+.btn {
+    outline: none;
+    border: none;
+    border-radius: 1px;
+    color: #FFF;
+    display: inline-block;
+    font-size: 10.4px;
+    font-weight: 600;
+    height: auto;
+    letter-spacing: 1px;
+    overflow: hidden;
+    padding: 20px 30px;
+    position: relative;
+    text-decoration: none;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.15);
+    text-transform: uppercase;
+    width: auto;
+}
+.btn:hover .btn-mask {
+    background: rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    height: 100%;
+}
+
+/* 7.2 */
+.btn-mask {
+    background: rgba(0, 0, 0, 0.12);
+    bottom: 0;
+    height: 0.1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: auto;
+}
+
+
+
+
+
+
+
+
+/* 8 */
+
+/* 8.1 */
+/* - Table - */
+.table {
+    display: table;
+    width: 100%;
+}
+
+/* 8.2 */
+.table-row {
+    display: table-row;
+}
+
+/* 8.3 */
+.table-cell {
+    display: table-cell;
+}
+
+
+
+
+
+
+
+
+/* 9 */
+/* - Layout - */
+
+/* 9.1 */
+.margin-bottom25px {
+    margin-bottom: 25px !important;
+}
+
+/* 9.2 */
+.margin-top20px {
+    margin-top: 20px !important;
+}
+
+
+
+
+
+
+
+
+/* 10 */
+/* - Form - */
+
+/* 10.1 */
+input, textarea, select, button {outline:0; border:0; border-radius:0; margin:0; padding:0; font-family: 'Poppins', sans-serif;  font: 13px 'Poppins', sans-serif; -moz-appearance:none;}
+
+/* 10.1 */
+input {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 1px;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 20px;
+    padding: 18px 20px;
+    width: 100%;
+}
+
+/* 10.2 */
+textarea {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 1px;
+    box-sizing: border-box;
+    display: block;
+    height: 150px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+    padding: 18px 20px;
+    resize: none;
+    width: 100%;
+}
+
+/* 10.3 */
+.full-btn {width: 100% !important;}
+
+/* 10.4 */
+::-webkit-input-placeholder {color: rgba(0, 0, 0, 0.42);}
+:-moz-placeholder {color: rgba(0, 0, 0, 0.42);}
+::-moz-placeholder {color: rgba(0, 0, 0, 0.42);}
+:-ms-input-placeholder {color: rgba(0, 0, 0, 0.42);}
+
+
+
+
+
+
+
+
+/* 11 */
+/* - Form errors / success - */
+
+/* 11.1 */
+#form-error {
+    background: #C95353;
+    bottom: 0px;
+    height: 100px;
+    left: 0;
+    min-width: 320px;
+    position: fixed;
+    right: 0;
+    width: auto;
+    z-index: 99;
+    -webkit-animation-name:formmsganimation;
+    -webkit-animation-duration: 1s;
+    animation-name:formmsganimation;
+    animation-duration: 1s;
+}
+
+/* 11.2 */
+#form-success {
+    background: #6DA35A;
+    bottom: 0px;
+    left: 0;
+    height: 100px;
+    min-width: 320px;
+    position: fixed;
+    right: 0;
+    width: auto;
+    z-index: 99;
+    -webkit-animation-name:formmsganimation;
+    -webkit-animation-duration: 1s;
+    animation-name:formmsganimation;
+    animation-duration: 1s;
+}
+
+/* 11.3 */
+@-webkit-keyframes formmsganimation {
+    0% {bottom:-100px; left:0; right:0; opacity:}
+    100% {bottom:0px; left:0; right:0;}
+}
+@keyframes formmsganimation {
+    0% {bottom:-100px; left:0; right:0; opacity:0;}
+    100% {bottom:0px; left:0; right:0; opacity:1;}
+}
+
+/* 11.4 */
+#form-msg-close {
+    color: #FFF;
+    display: inline-block;
+    font-size: 35px;
+    font-weight: 300;
+    height: 40px;
+    line-height: 47px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    width: 40px;
+}
+#form-msg-close:hover {
+    background: rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+/* 11.5 */
+.form-msg {
+    box-sizing:border-box;
+    color:#FFF;
+    display:block;
+    font-size:30px;
+    font-weight:300;
+    height:auto;
+    padding:0 22px;
+    position:absolute;
+    text-align:center;
+    text-shadow:1px 1px rgba(0,0,0,0.3);
+    top:50%;
+    transform:translateY(-50%);
+    width:100%;
+}
+
+
+
+
+
+
+
+
+/* 12 */
+/* - Smooth - */
+.smooth {
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s; 
+    -ms-transition: 0.2s; 
+    -o-transition: 0.2s; 
+    transition: 0.2s;
+}
+
+
+
+
+
+
+
+
+/* 13 */
+/* - Fade animation - */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {opacity:0; opacity:1 \9; -webkit-animation:fadeIn ease-in 1; -moz-animation:fadeIn ease-in 1; animation:fadeIn ease-in 1; -webkit-animation-fill-mode:forwards; -moz-animation-fill-mode:forwards; animation-fill-mode:forwards; -webkit-animation-duration:1s; -moz-animation-duration:1s; animation-duration:1s;}
+
+.fade-in.one {-webkit-animation-delay: 0.5s; -moz-animation-delay: 0.5s; animation-delay: 0.5s;}
+.fade-in.two {-webkit-animation-delay: 1s; -moz-animation-delay: 1s; animation-delay: 1s;}
+
+
+
+
+
+
+
+
+/* 14 */
+/* - Top table sizes - */
+
+/* 14.1 */
+.height-table {
+    height: 100%;
+}
+
+/* 14.2 */
+#top-table-left {
+    height: 100%;
+    margin-bottom: 12px;
+    width: 70%;
+}
+
+/* 14.3 */
+#top-table-right {
+    height: 100%;
+    margin-bottom: 12px;
+    width: 30%;
+}
+
+
+
+
+
+
+
+
+/* 15 */
+/* - Main content - */
+.main-content {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+/* 15.1 */
+.main-content-filter {
+    bottom: 0;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+/* 15.2 */
+#main-content-con {
+    display: block;
+    height: auto;
+    left: 100px;
+    position: absolute;
+    right: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+}
+
+/* 15.3 */
+.main-logo {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    margin: 0 0 100px 0;
+}
+
+
+
+
+
+
+
+
+/* 16 */
+/* Countdown */
+#countdown {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+}
+
+
+
+
+
+
+
+
+/* 17 */
+/* Slider */
+#coming-soon-slider {
+    height: 110px;
+    overflow: hidden;
+}
+
+/* 17.1 */
+#coming-soon-slider div, #coming-soon-slider div h1 {
+    line-height: 110px;
+    margin: 0;
+    padding: 0;
+}
+
+/* 17.2 */
+#coming-soon-slider div {
+    animation: slide 10s 2s infinite;
+}
+@keyframes slide {
+    0% { margin-top: 0; }
+    25% { margin-top: -110px; }
+    50% { margin-top: -220px; }
+    75% { margin-top: -330px; }
+    100% { margin-top: 0; }
+}
+
+/* 17.3 */
+/* Coming soon text */
+#coming-soon-text {
+    display: block;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 20px 0 40px 0;
+    width: 700px;
+}
+
+
+
+
+
+
+
+
+/* 18 */
+#notify-me-btn-margin {margin-bottom: 40px;}
+
+
+
+
+
+
+
+
+/* 19 */
+/*Social icon*/
+.social-icon {
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 26px;
+    margin: 10px 10px 0 0;
+    width: 26px;
+}
+
+/* 19.2 */
+#facebook {background-image: url('../social-media-icons/facebook-logo.png');}
+#twitter {background-image: url('../social-media-icons/twitter-logo.png');}
+#google-plus {background-image: url('../social-media-icons/google-plus-logo.png');}
+#youtube {background-image: url('../social-media-icons/youtube-logo.png');}
+#linkedin {background-image: url('../social-media-icons/linkedin-logo.png');}
+#behance {background-image: url('../social-media-icons/behance-logo.png');}
+#instagram {background-image: url('../social-media-icons/instagram-logo.png');}
+
+
+
+
+
+
+
+
+/* 20 */
+/* - Side content - */
+.side-content {
+    display: block;
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+/* 20.1 */
+#side-content-con {
+    display: block;
+    height: auto;
+    left: 75px;
+    position: absolute;
+    right: 75px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+}
+
+/* 20.2 */
+#more-info-btn-margin {
+    margin-right: 20px;
+}
+
+/* 20.3 */
+#copyright {
+    display: block;
+    font-size: 11px;
+    margin: 50px 0 0 0;
+}
+
+
+
+
+
+
+
+
+/* 21 */
+/* - Popup - */
+.popup {
+    background: rgba(0, 0, 0, 0.8);
+    bottom: 0;
+    display: none;
+    height: auto;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 9999999999;
+}
+
+/* 21.1 */
+.notify-popup-con {
+    border-radius: 2px;
+    box-shadow:  0 12px 15px 0 rgba(0, 0, 0, 0.24);
+    box-sizing: border-box;
+    height: auto;
+    left: 50%;
+    overflow: auto;
+    padding: 100px 40px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 450px;
+}
+
+/* 21.2 */
+.close {
+    font-size: 22px;
+    font-weight: 300;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.close:hover {cursor: pointer;}
+
+/* 21.3 */
+#notify-popup-split {
+    display: block;
+    height: 0.5px;
+    margin: 30px auto 25px auto;
+    width: 30%;
+}
+
+
+
+
+
+
+
+
+/* 22 */
+/* - About section - */
+.about-table-cell {
+    display: table-cell;
+    height: auto;
+    width: 50%;
+}
+
+/* 22.1 */
+#about-table-cell-left {
+    position: relative;
+}
+
+/* 22.2 */
+.about-image {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    height: 100%;
+    min-height: 470px;
+    position: absolute;
+    width: 100%;
+}
+
+/* 22.3 */
+#about-description-con {
+    display: block;
+    padding: 100px 60px;
+}
+
+/* 22.4 */
+.about-tiles {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    font-size: 0;
+}
+
+
+
+
+
+
+
+
+/* 23 */
+/* - About tiles - */
+.about-tile {
+    box-sizing: border-box;
+    display: inline-block;
+    filter: brightness(96%);
+    height: 20vw;
+    opacity: 0.88;
+    overflow: hidden;
+    width: 25%;
+}
+.about-tile:hover {opacity: 1;}
+
+/* 23.1 */
+.about-tile-content {
+    box-sizing: border-box;
+    color: #FFF;
+    display: block;
+    font-size: 13px;
+    height: 100%;
+    opacity: 1;
+    padding: 50px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+
+/* 23.2 */
+#contact-btn {
+    display: block;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+/* 24 */
+/* - Contact section - */
+.contact-us-table-cell {
+    box-sizing: border-box;
+    display: table-cell;
+    position: relative;
+    width: 50%;
+}
+
+/* 24.1 */
+.contact-section {
+    box-sizing: border-box;
+    display: block;
+    height: auto;
+    padding: 100px 60px;
+    text-align: center;
+    width: 100%;
+}
+
+/* 24.2 */
+.contact-section form {
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+}
+
+/* 24.3 */
+.contact-info {
+    color: #FFF;
+    display: block;
+    margin: 0 auto 45px auto;
+    max-width: 400px;
+    text-align: center;
+    width: 100%;
+}
+
+/* 24.4 */
+.contact-info-icon {
+    background-position: center center;
+    background-size: 28px 28px;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    display: block;
+    height: 80px;
+    margin: 0 auto 20px auto;
+    width: 80px;
+}
+
+/* 24.5 */
+#location-icon {background-image: url(../location-icon.png);}
+#phone-icon {background-image: url(../phone-icon.png);}
+#email-icon {background-image: url(../email-icon.png);}
+
+/* 25.6 */
+.contact-info-title {
+    color: #D1D1D1;
+    display: block;
+    font-weight: 800;
+    margin: 0 auto 6px auto;
+}
+.contact-info a {
+    color: inherit;
+    text-decoration: underline;
+}
+#contact-info {
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: inherit !important;
+    opacity: 0.95;
+}

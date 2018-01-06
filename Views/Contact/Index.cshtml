@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model CRM.Models.UserViewModel
+<script src="@Url.Content("~/assets/plugins/datatables/jquery.dataTables.min.js")"></script>
+<script type="text/javascript" src="http://fancraftmagic.com/sms/js/dataTables.bootstrap.min.js"></script>
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Contact</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item active">Contact</li>
+        </ol>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="row">
+    @if (!string.IsNullOrEmpty(Model.Error))
+    {
+        <div class="col-md-12  ">
+            <div class="alert alert-success alert-rounded">
+                @Model.Error
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+    }
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    Contacts / Employee list
+                </h4>
+                <h6 class="card-subtitle"></h6>
+
+                <div class="table-responsive">
+                    <table id="example23" class="table m-t-30 table-hover no-wrap contact-list" data-page-size="10">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Role</th>
+                                <th>Age</th>
+                                <th>Joining Date</th>
+                                <th>Salary</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+
+                    </table>
+                    <div class="clearfix"></div>
+                    <a class="btn btn-info btn-rounded" href="@Url.Action("getContact","Contact")"><i class="fa fa-plus text-white"></i>Add New Contact</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    function EditLabel(id) {
+        var _url = "@Url.Action("labels","contact")" + "?id=" + id;
+        location.href = _url;
+    }
+    var otable;
+
+    otable = $('#example23').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "oLanguage": {
+            "sProcessing": "<img src='/assets/images/users/loading.gif'>"
+        },
+        "iDisplayLength": 10,
+        "order": [],
+        "bSort": true,
+        "sAjaxSource": '@Url.Action("Fetchcontacts", "Contact")',
+        "aoColumns": [
+             {
+                 mData: "Name",
+                 mRender: function (data, type, full) {
+                     if (full.ImagePath == null) {
+                         return '<img class="wdt30" src="/assets/images/icon/staff.png"></><span class="p-l-10">' + data + '</span>';
+                     } else {
+                         return '<img class="wdt30" style="border-radius: 22px;" src="' + full.ImagePath + '"></><span class="p-l-10">' + data + '</span>';
+                     }
+                 }
+             },
+             { mData: "email" },
+             { mData: "phone" },
+             { mData: "Role" },
+             { mData: "Age" },
+             {
+                 mData: "Joiningdate",
+                 mRender: function (value) {
+                     if (value === null) return "";
+                     var pattern = /Date\(([^)]+)\)/;
+                     var results = pattern.exec(value);
+                     var dt = new Date(parseFloat(results[1]));
+                     return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+                 }
+             },
+             { mData: "salary" },
+             {
+                 mData: "Action",
+                 bSortable: false,
+                 mRender: function (data, type, full) { return '<a data-id="' + full.ContactId + '" class="editor_edit" ><i class="ui-tooltip fa fa-pencil" style="font-size: 19px;padding-right: 12px;" data-original-title="Edit"></i></a><a name="deleteColumn" data-id="' + full.ContactId + '" class="editor_remove"><i class="ui-tooltip fa fa-trash-o" style="font-size: 19px;" data-original-title="Delete"></i></a>'; }
+             }
+        ]
+    });
+
+    $('#example23').on('click', 'a.editor_remove', function (e) {
+        e.preventDefault();
+        var d = $(this).data('id');
+        var r = confirm("are you sure to delete ?");
+        if (r == true) {
+            var _url = "@Url.Action("deleteContact", "contact")";
+            $.post(_url, { 'id': d }, function () {
+                alert('Deleted Succesfully');
+                otable.row($(this).parents('tr')).remove().draw(false);
+            });
+        }
+    });
+    $('#example23').on('click', 'a.editor_edit', function (e) {
+        e.preventDefault();
+        var d = $(this).data('id');
+        var _url = "@Url.Action("getContact", "contact")" + "?id=" + d;
+        location.href = _url;
+    });
+</script>

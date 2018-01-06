@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "Label List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+} 
+<script src="@Url.Content("~/assets/plugins/datatables/jquery.dataTables.min.js")"></script>
+<script type="text/javascript" src="http://fancraftmagic.com/sms/js/dataTables.bootstrap.min.js"></script>
+@model CRM.Models.UserViewModel
+ <div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Label</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("dashboard","login")">Home</a></li>
+            <li class="breadcrumb-item active">Label</li>
+        </ol>
+    </div>
+</div>
+<div class="clearfix"></div>
+<div class="row">
+    @if (!string.IsNullOrEmpty(Model.Error))
+    {
+        <div class="col-md-12  ">
+            <div class="alert alert-success alert-rounded">
+                @Model.Error
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
+    }
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    Label List
+                </h4>
+                <h6 class="card-subtitle"></h6> 
+                <div class="table-responsive">
+                    <table id="example23" class="table m-t-30 table-hover no-wrap contact-list" data-page-size="10">
+                        <thead>
+                            <tr> 
+                                <th>Name</th>
+                                <th>Description</th> 
+                                <th>Contacts</th> 
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                        </tbody> 
+                    </table>
+                    <div class="clearfix"></div>
+                    <a class="btn btn-info btn-rounded" href="@Url.Action("labels","Contact")"><i class="fa fa-plus text-white"></i>Add New Label</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<script> 
+    var otable; 
+    otable = $('#example23').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "oLanguage": {
+            "sProcessing": "<img src='/assets/images/users/loading.gif'>"
+        },
+        "iDisplayLength": 10,
+        "order": [],
+        "bSort": true,
+        "sAjaxSource": '@Url.Action("Fetchlabels", "Contact")',
+        "aoColumns": [
+             { mData: "LableName" },
+             { mData: "Description" },
+             { mData: "TotalContacts" },
+             {
+                 mData: "Action",
+                 bSortable: false,
+                 mRender: function (data, type, full) { return '<a data-id="' + full.Id + '" class="editor_edit" ><i class="ui-tooltip fa fa-pencil" style="font-size: 19px;padding-right: 12px;" data-original-title="Edit"></i></a><a name="deleteColumn" data-id="' + full.Id + '" class="editor_remove"><i class="ui-tooltip fa fa-trash-o" style="font-size: 19px;" data-original-title="Delete"></i></a>'; }
+             }
+        ]
+    });
+
+    $('#example23').on('click', 'a.editor_remove', function (e) {
+        e.preventDefault();
+        var d = $(this).data('id');
+        var r = confirm("are you sure to delete ?");
+        if (r == true) {
+            var _url = "@Url.Action("deletelabel", "contact")";
+            $.post(_url, { 'id': d }, function () {
+                alert('Deleted Succesfully');
+                otable.row($(this).parents('tr')).remove().draw(false);
+            });
+        }
+    });
+    $('#example23').on('click', 'a.editor_edit', function (e) {
+        e.preventDefault();
+        var d = $(this).data('id');
+        var _url = "@Url.Action("labels","contact")" + "?id=" + d;
+        location.href = _url;
+    });
+</script>

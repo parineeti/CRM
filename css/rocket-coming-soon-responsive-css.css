@@ -1,0 +1,190 @@
+/* ----------------------------------- */
+/*
+- Thank you for purchasing the multi-purpose Rocket - Coming Soon Template from hBeThemes.
+- This is the responsive CSS sheet, it changes the layout of the template to fit smaller screens. If you want to edit the template's colours and images, open "rocket-coming-soon-css.css"
+- It's recommended that you do not edit anything in this file unless you know what you're doing.
+/*
+/* ----------------------------------- */
+
+
+
+
+
+
+
+
+/* 19" screens */
+@media screen and (max-width:1440px) {
+    
+    /* - About tiles - */
+    .about-tile-content {padding: 40px;}
+    
+}
+
+
+
+/* 15" screens */
+@media screen and (max-width:1366px) {
+    
+    /* - Main content (left section) - */
+    #top-table-left {width: 68%;}
+    #main-content-con {left: 90px; right: 90px;}
+    
+    /* - Side content (right section) - */
+    #top-table-right {width: 32%;}
+    #side-content-con {left: 60px !important; right: 60px !important;}
+    
+    
+    
+    /* - About tiles - */
+    .about-tile-content {padding: 30px;}
+    #contact-info {position: initial;}
+    
+}
+
+
+
+/* 13" screens */
+@media screen and (max-width:1280px) {
+    
+    /* - Main content (left section) - */
+    #main-content-con {left: 70px; right: 70px;}
+    #coming-soon-text {width: 100%;}
+    h1 {font-size: 80px;}
+    
+    /* - Side content (right section) - */
+    h2 {font-size: 26px; line-height: 34px;}
+    #more-info-btn-margin {margin-right: 10px;}
+    
+    
+    
+    /* - About tiles - */
+    .about-tile {width: 50% !important;}
+    
+}
+
+
+
+/* 12" screens */
+@media screen and (max-width:1024px) {
+    
+    /* - Main content (left section) - */
+    #top-table-left {display: block; height: auto; width: 100%;}
+    .main-content {box-sizing: border-box; padding: 90px 60px;}
+    #main-content-con {left: 0; position: relative; right: 0; transform: none;}
+    .height-table {height: auto;}
+    
+    
+    /* - Side content (right section) - */
+    #top-table-right {display: block; height: auto; width: 100%;}
+    .side-content {box-sizing: border-box; padding: 90px 60px;}
+    #side-content-con {position: initial; transform: none;}
+    #copyright {display: none;}
+    
+    
+    
+    /* - About image (left section) - */
+    #about-table-cell-left {display: block; height: auto; width: 100%;}
+    .about-image {height: 400px; min-height: 400px; position: initial; width: 100%;}
+
+    
+    /* - About content (right section) - */
+    #about-table-cell-right {display: block; height: auto; width: 100%;}
+    
+}
+
+
+
+/* Tablets */
+@media screen and (max-width:850px) {
+    
+    .height-table {height: auto;}
+    
+    
+    
+    /* - About tiles - */
+    .about-tile {height: auto; width: 100% !important;}
+    
+    
+    
+    /* - Contact section - */
+    .contact-us-table-cell {display: block; width: 100%;}
+    .contact-info {display: inline-block; max-width: none; width: 30%;}
+    
+}
+
+@media screen and (max-width:650px) {
+    
+    .form-msg {font-size: 22px;}
+    #form-msg-close {font-size: 18px;}
+    
+    /* - Main content (left section) - */
+    .main-content {padding: 60px 30px;}
+    h1 {font-size: 60px;}
+    #coming-soon-slider {height: 70px;}
+    #coming-soon-slider div, #coming-soon-slider div h1 {line-height: 70px;}
+    @keyframes slide {
+        0% { margin-top: 0; }
+        25% { margin-top: -70px; }
+        50% { margin-top: -140px; }
+        75% { margin-top: -210px; }
+        100% { margin-top: 0; }
+    }
+    
+    /* - Side content (right section) - */
+    .side-content {box-sizing: border-box; padding: 60px 30px;}
+    
+    /* - Notify Me popup - */
+    .notify-popup-con {bottom: 0; height: auto; left: 0; right: 0; top: 0; transform: none; width: auto;}
+    
+    
+    
+    /* - About section - */
+    #about-description-con {padding: 60px 30px;}
+    
+    
+    
+    /* - Contact section - */
+    .contact-section {padding: 60px 30px;}
+    
+}
+
+
+
+/* Smart Phone */
+@media screen and (max-width:500px) {
+    
+    /* - Main content (left section) - */
+    .main-content {padding: 40px 20px; text-align: center;}
+    .main-logo {margin: 0 auto 100px auto;}
+    #countdown {font-size: 15px; line-height: 18px; margin: 0 0 15px 0;}
+    h1 {font-size: 40px;}
+    #to-go {display: none;}
+    #coming-soon-slider {height: 50px;}
+    #coming-soon-slider div, #coming-soon-slider div h1 {line-height: 50px;}
+    @keyframes slide {
+        0% { margin-top: 0; }
+        25% { margin-top: -50px; }
+        50% { margin-top: -100px; }
+        75% { margin-top: -150px; }
+        100% { margin-top: 0; }
+    }
+    #coming-soon-text {font-size: 15px; margin: 25px 0 40px 0;}
+    
+    
+    
+    /* - Contact section - */
+    .contact-info {display: block; max-width: none; width: 100%;}
+    
+}
+
+
+
+/* Smaller Smart Phone */
+@media screen and (max-width:320px) {
+    
+    /* - Main content (left section) - */
+    .main-logo {margin: 0 auto 60px auto;}
+    h1 {font-size: 35px;}
+    
+}

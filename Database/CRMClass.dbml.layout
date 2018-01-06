@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="CRMClass">
+  <DataContextMoniker Name="/CRMClassDataContext" />
+  <nestedChildShapes>
+    <classShape Id="b44361ce-22ec-4bfe-95bb-9cd56240b680" isExpanded="false" absoluteBounds="3.125, 1.5, 2, 0.45">
+      <DataClassMoniker Name="/CRMClassDataContext/tbllabel" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ff191475-254e-4fb5-a99a-aa01b80a8059" absoluteBounds="3.14, 1.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="42369145-0004-4d08-87a7-1e0d0d375536" isExpanded="false" absoluteBounds="0.875, 1.5, 2, 0.45">
+      <DataClassMoniker Name="/CRMClassDataContext/tblstatus" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b6a6679c-d400-4820-8253-86a8ee6695de" absoluteBounds="0.89000000000000012, 1.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="81c3baf2-0baf-4474-a30e-c68bcccf2bb4" isExpanded="false" absoluteBounds="0.875, 2, 2, 0.45">
+      <DataClassMoniker Name="/CRMClassDataContext/tbljobType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f305b486-df5b-4d9f-85f8-1a28a85b590a" absoluteBounds="0.89000000000000012, 2.46, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="44982ee0-7f0d-46ee-9bc7-a908eefef977" isExpanded="false" absoluteBounds="0.875, 1, 2, 0.45">
+      <DataClassMoniker Name="/CRMClassDataContext/tblcontact" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b51bc5f4-4244-46ba-8f8e-873e50a9bea4" absoluteBounds="0.88999999999999968, 1.46, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a13dcf10-0357-4ca0-86ed-8351ca8e1abc" isExpanded="false" absoluteBounds="3.125, 1, 2, 0.45">
+      <DataClassMoniker Name="/CRMClassDataContext/tblinbox" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2795a638-8695-441f-a4fd-78711345aa7b" absoluteBounds="3.1399999999999997, 1.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4d7961d5-d0d8-4585-89a0-287cf909955c" isExpanded="false" absoluteBounds="0.875, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/CRMClassDataContext/tbllogin" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c71b0c8e-226f-4b75-b91f-f382392ca554" absoluteBounds="0.88999999999999968, 0.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2e663a53-288f-491b-b805-ed10e2aece57" isExpanded="false" absoluteBounds="3.125, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/CRMClassDataContext/tblJobMaster" />
+      <nestedChildShapes>
+        <elementListCompartment Id="773746d7-9b28-4839-bc04-010a378be44a" absoluteBounds="3.14, 0.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
